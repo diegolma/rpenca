@@ -3,6 +3,9 @@ class usuario extends ClaseBase{
 
 	public $name="";
 	public $email="";
+    public $idFB = "";
+    public $idTW = "";
+    public $idG = "";
 	private $pass="";
 
 	public function __construct($obj=NULL) {        
@@ -26,6 +29,18 @@ class usuario extends ClaseBase{
     	return $this->email;
     }
 
+    public function getidFB(){
+        return $this->idFB;
+    }
+
+    public function getidTW(){
+        return $this->idTW;    
+    }
+
+    public function getidG(){
+        return $this->idG;        
+    }
+
     //SETTERS
 
     public function setName($na){
@@ -40,6 +55,17 @@ class usuario extends ClaseBase{
     	$this->pass=$pa;
     }
 
+    public function setidFB($fb){
+        $this->idFB=$fb;
+    }
+
+    public function setidTW($tw){
+        $this->idTW=$tw;
+    }
+
+    public function setidG($g){
+        $this->idG=$g;
+    }
     //AGREGAR 
 
     public function agregar(){            
@@ -68,7 +94,7 @@ class usuario extends ClaseBase{
         $res=$resultado->fetch_object();                        
         Session::init();
         Session::set('usuario_logueado', true);        
-        Session::set('usuario_nombre', $res->nombre);
+        Session::set('usuario_nombre', $res->name);
         Session::set('usuario_email', $res->email);
         return true;
     }
