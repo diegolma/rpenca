@@ -1,7 +1,8 @@
 <?php
 class usuario extends ClaseBase{	
 
-	public $name="";
+	public $id;
+    public $name="";
 	public $email="";
     public $idFB = "";
     public $idTW = "";

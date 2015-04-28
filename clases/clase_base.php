@@ -2,7 +2,6 @@
 class ClaseBase{
 	private $tabla;
     private $db;
-    private $conectar;
     private $modelo;
     
     public function __autoload($class) {
