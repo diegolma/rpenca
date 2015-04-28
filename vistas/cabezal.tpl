@@ -27,8 +27,8 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    <img src="logo.png" alt="PENCA COPA AMERICA 2015">
+                <a class="page-scroll" href="#page-top">
+                    <img src="imgs/logo.png" alt="PENCA COPA AMERICA 2015">
                 </a>
             </div>
 

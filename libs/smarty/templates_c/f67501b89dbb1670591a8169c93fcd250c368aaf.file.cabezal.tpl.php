@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-28 02:59:36
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-28 03:50:00
          compiled from "vistas\cabezal.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9620553edb7877ce27-82255756%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f67501b89dbb1670591a8169c93fcd250c368aaf' => 
     array (
       0 => 'vistas\\cabezal.tpl',
-      1 => 1429750752,
+      1 => 1430185795,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_553edb78820f59_71085205',
   'variables' => 
   array (
     'proyecto' => 0,
     'buscar' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_553edb78820f59_71085205',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_553edb78820f59_71085205')) {function content_553edb78820f59_71085205($_smarty_tpl) {?><!--<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -55,8 +55,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    <img src="logo.png" alt="PENCA COPA AMERICA 2015">
+                <a class="page-scroll" href="#page-top">
+                    <img src="imgs/logo.png" alt="PENCA COPA AMERICA 2015">
                 </a>
             </div>
 
