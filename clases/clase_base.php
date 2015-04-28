@@ -16,6 +16,7 @@ class ClaseBase{
     public function getDB(){
         return $this->db;
     }
+    
     //Funciones comunes a todas las clases
     public function getListado(){
     	$sql="select * from $this->tabla ";
@@ -40,6 +41,7 @@ class ClaseBase{
         }
         return $res;
     }
+
     public function borrar($id){
     	$sql="DELETE FROM $this->tabla WHERE id=$id ";
     	$resultado =$this->db->query($sql);

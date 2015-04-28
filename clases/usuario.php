@@ -22,6 +22,10 @@ class usuario extends ClaseBase{
 
     //GETTERS
 
+    public function getId(){
+        return $this->id;
+    }
+
     public function getName(){
     	return $this->name;
     }
