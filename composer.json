@@ -1,6 +1,7 @@
 {
 	"require":{
 		"phpmailer/phpmailer":"5.2.9",
-		"facebook/php-sdk-v4": "4.0.*"
+		"facebook/php-sdk-v4": "4.0.*",
+		"guzzlehttp/guzzle": "~5.0"
 	}
 }
