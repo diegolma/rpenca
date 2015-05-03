@@ -4,6 +4,117 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+.btnconta{
+    float: right;
+    margin-right: 4%;
+}
+
+.btnconta button{
+    background-color: black; 
+    border-color: black; 
+    float: right;
+}
+
+.btnconta i{
+    color: black;
+    margin-left: 65%;
+}
+
+.contacto textarea{
+    resize: none;
+    float: right;
+    width: 80%;
+}
+
+.contacto{
+    float: right;
+    width: 80%;
+}
+
+.divcont{
+    width: 50%;
+    float: left;
+}
+
+.login{
+    width: 100%;
+}
+
+.login i{
+    float: left;
+}
+
+.login input{
+    width:70%;
+    margin-left:20%
+}
+
+.btnlogin{
+    float: right; 
+    margin-right: 15%;    
+}
+
+.btnlogin button{
+    background-color: black;
+    border-color: black;
+}
+.separador{
+    border-left:1px solid #ccc;
+    height:160px;    
+}
+
+.separador a{
+    color: black;
+}
+
+.social a{
+    color: black;
+}
+
+.social h4{
+    float: right; 
+    margin-top: 15px; 
+    margin-right: 15%
+}
+
+.facebook:hover{
+    color:#337AB7;
+}
+
+.twitter:hover{
+    color:#87CEEB;
+}
+
+.google:hover{
+    color: #FF0000;
+}
+
+.btnreg{
+    float: right;
+    margin-right: 3%;
+}
+
+.btnreg button{
+    background-color: black;
+    border-color: black;
+}
+
+.regi{  /*para el div contenedor de los glyphicons y los input en el modal registro*/
+    float: right;
+    width: 100%;
+}
+
+.regis{ /*para los input del modal registro*/
+    width: 60%;
+    margin-left: 20%;
+}
+
+.registro{  /*para los glyphicons del modal registro*/
+    color: black;
+    margin-left: 10%;
+    float: left;
+}
+
 body {
     width: 100%;
     height: 100%;
@@ -23,7 +134,7 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 35px;
+    margin: 0 0 0;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
@@ -44,8 +155,7 @@ p {
     }
 }
 
-a {
-    color: #42dca3;
+a {    
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -281,7 +391,7 @@ a:focus {
 
 @media(min-width:767px) {
     .content-section {
-        padding-top: 250px;
+        padding-top: 100px;
     }
 
     .download-section {

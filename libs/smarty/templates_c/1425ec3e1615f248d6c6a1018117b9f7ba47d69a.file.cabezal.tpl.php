@@ -1,4 +1,25 @@
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-03 01:03:34
+         compiled from "vistas\cabezal.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:503355384450b51a41-73241465%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '1425ec3e1615f248d6c6a1018117b9f7ba47d69a' => 
+    array (
+      0 => 'vistas\\cabezal.tpl',
+      1 => 1430607812,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '503355384450b51a41-73241465',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_55384450b8c3c3_34269931',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_55384450b8c3c3_34269931')) {function content_55384450b8c3c3_34269931($_smarty_tpl) {?><nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
@@ -52,4 +73,4 @@
         </div>
     </div>
 
-    
+    <?php }} ?>

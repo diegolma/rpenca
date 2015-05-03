@@ -1,10 +1,36 @@
-
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-03 07:19:50
+         compiled from "vistas\home.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2864553844509fbd68-41649912%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'd3231b724ff089ba5f3c0908c19bbd201e242a51' => 
+    array (
+      0 => 'vistas\\home.tpl',
+      1 => 1430630386,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2864553844509fbd68-41649912',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_55384450b03845_68353909',
+  'variables' => 
+  array (
+    'proyecto' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_55384450b03845_68353909')) {function content_55384450b03845_68353909($_smarty_tpl) {?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     
-    <title>{$proyecto}</title>
+    <title><?php echo $_smarty_tpl->tpl_vars['proyecto']->value;?>
+</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +46,8 @@
   </head>
 
   <body>
-    {include file="cabezal.tpl"}
+    <?php echo $_smarty_tpl->getSubTemplate ("cabezal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
     <!-- Intro Header -->
     <header class="intro" id="prueba">        
         <div class="intro-body">
@@ -142,26 +169,45 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!--<?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="../../dist/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
     Just to make our placeholder images work. Don't actually copy the next line!
-    <script src="../../assets/js/vendor/holder.js"></script>
+    <?php echo '<script'; ?>
+ src="../../assets/js/vendor/holder.js"><?php echo '</script'; ?>
+>
     IE10 viewport hack for Surface/desktop Windows 8 bug
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+    <?php echo '<script'; ?>
+ src="../../assets/js/ie10-viewport-bug-workaround.js"><?php echo '</script'; ?>
+>-->
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <?php echo '<script'; ?>
+ src="js/jquery.js"><?php echo '</script'; ?>
+>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 
     <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/jquery.easing.min.js"><?php echo '</script'; ?>
+>
 
     <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"><?php echo '</script'; ?>
+>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
+    <?php echo '<script'; ?>
+ src="js/grayscale.js"><?php echo '</script'; ?>
+>
   </body>
 </html>
 
+<?php }} ?>

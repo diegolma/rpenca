@@ -5717,7 +5717,7 @@ button.close {
   border: 0;
 }
 .modal-open {
-  overflow: hidden;
+  overflow: scroll;
 }
 .modal {
   position: fixed;
@@ -5727,7 +5727,7 @@ button.close {
   left: 0;
   z-index: 1050;
   display: none;
-  overflow: hidden;
+  overflow: scroll;
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
@@ -5773,7 +5773,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-index: 0;
   background-color: #000;
 }
 .modal-backdrop.fade {
@@ -5782,7 +5782,7 @@ button.close {
 }
 .modal-backdrop.in {
   filter: alpha(opacity=50);
-  opacity: .5;
+  opacity: .7;
 }
 .modal-header {
   min-height: 16.42857143px;
