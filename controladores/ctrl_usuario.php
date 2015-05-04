@@ -1,8 +1,8 @@
 <?php
-require "clases/clase_base.php";
 require "clases/usuario.php";
 require "clases/template.php";
-require_once('clases/Utils.php');
+require_once "clases/Utils.php";
+require_once "clases/auth.php";
 
 
 	function getListado(){ 	 	
@@ -25,9 +25,20 @@ require_once('clases/Utils.php');
 	}
 
 	function home(){
-		$titulo="Inicio";
 		$tpl= new Template();
-		$datos=array('titulo' => $titulo);
+		Session::init();
+		Session::destroy();
+		if(Auth::logueado()){
+			$usuario=new Usuario();
+			$id=Session::get('id');
+			$usuario=$usuario->obtenerPorId($id);
+		}
+		else{
+			$usuario="";
+		}
+		
+
+		$datos=array('usuario' => $usuario);
 		$tpl->asignar('proyecto',"Penca");		
 		$tpl->mostrar('home',$datos);
 	}

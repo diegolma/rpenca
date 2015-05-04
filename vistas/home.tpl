@@ -19,7 +19,7 @@
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">        
 
     <!--El favicon-->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
 
   </head>
 

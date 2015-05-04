@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-04-28 04:03:35
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-04 23:48:29
          compiled from "vistas\home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:21991553edb77ec0242-61008714%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5aa00c5ded132eb1946f4902a1af52cdfa91f2c8' => 
     array (
       0 => 'vistas\\home.tpl',
-      1 => 1430186606,
+      1 => 1430776105,
       2 => 'file',
     ),
   ),
@@ -42,15 +42,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">        
+
+    <!--El favicon-->
+    <link rel="icon" type="image/png" href="favicon.png">
+
   </head>
 
   <body>
     <?php echo $_smarty_tpl->getSubTemplate ("cabezal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
     <!-- Intro Header -->
-    <header class="intro">        
+    <header class="intro" id="prueba">        
         <div class="intro-body">
             <div class="container">
                 <div class="row">
@@ -58,7 +61,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <h1 class="brand-heading">PENCA</h1>
                         <p class="intro-text">Alguien en algún lugar<br>está trabajando para terminar esta web.</p>
                         <a href="#about" class="btn btn-circle page-scroll">
-                            <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                            <span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
                         </a>
                     </div>
                 </div>
@@ -96,23 +99,68 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
     <!-- Contact Section -->
     <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Un Mate?</h2>
-                <p>Como buenos Uruguayos que somos nos gusta el mate, puedes cebarnos uno, avísanos:</p>
-                <p><a href="mailto:contacto@onse.com.uy">contacto@onse.com.uy</a>
-                </p>
-                <!--<ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li>
-                </ul>-->
+        <div>
+            <div>
+                <h2>Contáctanos</h2>  
+                <br>
+                <br>
+                <br>                                                            
+                <form class="form-horizontal">
+                <fieldset>           
+                    <div class="divcont">
+                    <!-- Text input-->
+                    <div class="form-group ">                      
+                      <div class="col-md-11">
+                        <a><i class="fa fa-user fa-2x registro"></i></a>
+                        <input id="name" name="name" placeholder="Nombre" class="form-control input-md contacto" required="" type="text">
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">                      
+                      <div class="col-md-11">
+                        <a><i class="fa fa-user fa-2x registro"></i></a>
+                        <input id="ape" name="ape" placeholder="Apellido" class="form-control input-md contacto" required="" type="text">
+                        
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">                      
+                      <div class="col-md-11">
+                        <a><i class="fa fa-envelope fa-2x registro"></i></a>
+                        <input id="mail" name="mail" placeholder="Email" class="form-control input-md contacto" required="" type="text">
+                        
+                      </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">                      
+                      <div class="col-md-11">
+                        <a><i class="fa fa-phone fa-2x registro"></i></a>
+                        <input id="phone" name="phone" placeholder="Teléfono" class="form-control input-md contacto" type="text">                        
+                      </div>
+                    </div>
+                    </div>         
+                    <div class="divcont">
+                    <!-- Textarea -->
+                    <div class="form-group">                      
+                      <div class="col-md-11">  
+                        <a><i class="fa fa fa-pencil-square-o fa-2x registro"></i></a>                                           
+                        <textarea class="form-control contacto" id="textarea" rows="5.5" name="textarea" placeholder="Ingresa aquí tu mensaje. En la brevedad nos estaremos comunicando contigo."></textarea>
+                      </div>
+                    </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="form-group">                      
+                      <div class="col-md-5 btnconta">
+                        <a><i class="fa fa-paper-plane fa-2x"></i></a>
+                        <button id="enviar" name="enviar" class="btn btn-primary">Enviar</button>
+                      </div>
+                    </div>
+
+                </fieldset>
+                </form>
             </div>
         </div>
     </section>

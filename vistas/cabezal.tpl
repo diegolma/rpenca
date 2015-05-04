@@ -25,18 +25,27 @@
                     <li>
                       <a class="page-scroll" href="#contact">Contacto</a>
                     </li>
+                    <!--
+                    Acá vamos a hacer las verificaciones para ver si mostramos esto o el nombre del usuario Logueado.
+                    -->
+                    {if $usuario!=""}
+                    <li>
+                        <a class="page-scroll">{$usuario->getName()}</a>
+                    </li>
+                    {else}
                     <li>                    
                       <a class="page-scroll" data-toggle="modal" href="vistas/usuarios_login.tpl" data-target="#myModal">Ingresar</a>
                     </li>
                     <li>                    
                       <a class="page-scroll" data-toggle="modal" href="vistas/usuarios_registro.tpl" data-target="#registro">Registrarse</a>
                     </li>
+                    {/if}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
-    </nav>        
+    </nav>        u
     <div id="myModal" class="modal fade" >
         <div class="modal-dialog">
             <div class="modal-content">

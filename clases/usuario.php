@@ -1,13 +1,16 @@
 <?php
+require_once "clases/clase_base.php";
+
 class usuario extends ClaseBase{	
 
-	public $id;
-    public $name="";
-	public $email="";
-    public $idFB = "";
-    public $idTW = "";
-    public $idG = "";
-	private $pass="";
+	private $id;
+    private $Nombre="";
+    private $Apellido="";
+	public $mail="";
+    public $id_f = "";
+    public $id_t = "";
+    public $id_g = "";
+	private $password="";
 
 	public function __construct($obj=NULL) {        
         if(isset($obj)){
@@ -27,49 +30,52 @@ class usuario extends ClaseBase{
     }
 
     public function getName(){
-    	return $this->name;
+        return $this->Nombre;
+    }
+     public function getApellido(){
+    	return $this->Apellido;
     }
 
     public function getEmail(){
-    	return $this->email;
+    	return $this->mail;
     }
 
     public function getidFB(){
-        return $this->idFB;
+        return $this->id_f;
     }
 
     public function getidTW(){
-        return $this->idTW;    
+        return $this->id_t;    
     }
 
     public function getidG(){
-        return $this->idG;        
+        return $this->id_g;        
     }
 
     //SETTERS
 
     public function setName($na){
-    	$this->name=$na;
+    	$this->nombre=$na;
     }
 
     public function setEmail($em){
-    	$this->email=$em;
+    	$this->mail=$em;
     }
 
     public function setPass($pa){
-    	$this->pass=$pa;
+    	$this->password=$pa;
     }
 
     public function setidFB($fb){
-        $this->idFB=$fb;
+        $this->id_f=$fb;
     }
 
     public function setidTW($tw){
-        $this->idTW=$tw;
+        $this->id_t=$tw;
     }
 
     public function setidG($g){
-        $this->idG=$g;
+        $this->id_g=$g;
     }
     //AGREGAR 
 

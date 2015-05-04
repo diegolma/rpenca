@@ -1,4 +1,6 @@
 <?php
+require_once "db/db.php";
+
 class ClaseBase{
 	private $tabla;
     private $db;
@@ -32,10 +34,9 @@ class ClaseBase{
     }
 
     public function obtenerPorId($id){
-        $sql="select * from $this->tabla where id=$id ";
-        $res=NULL;
-        $resultado =$this->db->query($sql)   
-            or die ("Fallo en la consulta");
+        $sql="SELECT * FROM $this->tabla where id=$id";        
+        $res=array();
+        $resultado =$this->db->query($sql) or die ("Fallo en la consulta");
          if($fila = $resultado->fetch_object()) {
            $res= new $this->modelo($fila);
         }
