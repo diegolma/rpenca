@@ -61,4 +61,21 @@ require_once "clases/auth.php";
 		$tpl->asignar('proyecto',"Penca");		
 		$tpl->mostrar('home',$datos);
 	}
+
+	function dashboard(){
+		if(Auth::logueado()){
+			$tpl=new Template();
+			$mensaje="";
+			$usr=new Usuario();
+			$usr=$usr->obtenerPorId(Session::get('id'));
+			$datos=array('usuario' => $usr,
+						 'mensaje' => $mensaje,
+						 'proyecto' => "Penca - Dashboard");
+			$tpl->mostrar('dashboard',$datos);
+		}else{
+			header("location:index.php");
+			exit;
+		}
+
+	}
 ?>
