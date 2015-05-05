@@ -98,16 +98,18 @@ class usuario extends ClaseBase{
     //LOGIN 
 
     public function login($email,$pass){
-        $resultado =$stmt = $this->getDB()->query("SELECT * from  usuarios WHERE email='".$email."' AND password='".$pass."'" );                    
-        if($resultado->num_rows<1){
-            return false;
-        }    
-        $res=$resultado->fetch_object();                        
-        Session::init();
-        Session::set('usuario_logueado', true);        
-        Session::set('usuario_nombre', $res->name);
-        Session::set('usuario_email', $res->email);
-        return true;
+        $resultado =$this->db->prepare("SELECT * FROM USUARIOS WHERE mail=? AND password=?");
+        $resultado->bind_param("ss", $email, $pass);
+        $resultado->execute();
+        $resultado->bind_result($id, $nombre, $apellido, $mail, $password, $id_f, $id_t, $id_g, $avatar);
+
+        while($resultado->fetch()){
+            Session::init();
+            Session::set('id',$id);
+            echo "Entre aca";
+            return true;
+        }
+        return false;
     }
 
     //LOGOUT 
@@ -115,7 +117,7 @@ class usuario extends ClaseBase{
     public function logout(){
         Session::init();
         Session::destroy();
-        header('location: login.php');
+        header('location: index.php');
         exit();
         
    }

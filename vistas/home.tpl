@@ -31,6 +31,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
+                        {if $mensaje!=""}
+                        <div class="alert alert-danger">{$mensaje}</div>
+                        {/if}
                         <h1 class="brand-heading">PENCA</h1>
                         <p class="intro-text">Alguien en algún lugar<br>está trabajando para terminar esta web.</p>
                         <a href="#about" class="btn btn-circle page-scroll">

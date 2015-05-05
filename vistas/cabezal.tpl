@@ -32,6 +32,9 @@
                     <li>
                         <a class="page-scroll">{$usuario->getName()}</a>
                     </li>
+                    <li>
+                        <a class="page-scroll" href="index.php?cerrar=1">Cerrar Sesion</a>
+                    </li>
                     {else}
                     <li>                    
                       <a class="page-scroll" data-toggle="modal" href="vistas/usuarios_login.tpl" data-target="#myModal">Ingresar</a>
@@ -45,7 +48,7 @@
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
-    </nav>        u
+    </nav> 
     <div id="myModal" class="modal fade" >
         <div class="modal-dialog">
             <div class="modal-content">

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-04 23:48:29
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-05 02:45:58
          compiled from "vistas\home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:21991553edb77ec0242-61008714%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5aa00c5ded132eb1946f4902a1af52cdfa91f2c8' => 
     array (
       0 => 'vistas\\home.tpl',
-      1 => 1430776105,
+      1 => 1430786746,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'proyecto' => 0,
+    'mensaje' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -58,6 +59,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
+                        <?php if ($_smarty_tpl->tpl_vars['mensaje']->value!='') {?>
+                        <div class="alert alert-danger"><?php echo $_smarty_tpl->tpl_vars['mensaje']->value;?>
+</div>
+                        <?php }?>
                         <h1 class="brand-heading">PENCA</h1>
                         <p class="intro-text">Alguien en algún lugar<br>está trabajando para terminar esta web.</p>
                         <a href="#about" class="btn btn-circle page-scroll">

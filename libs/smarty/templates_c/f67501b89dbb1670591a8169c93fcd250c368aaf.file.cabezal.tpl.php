@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-04 01:37:03
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-05 02:34:27
          compiled from "vistas\cabezal.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9620553edb7877ce27-82255756%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f67501b89dbb1670591a8169c93fcd250c368aaf' => 
     array (
       0 => 'vistas\\cabezal.tpl',
-      1 => 1430696217,
+      1 => 1430784624,
       2 => 'file',
     ),
   ),
@@ -58,6 +58,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         <a class="page-scroll"><?php echo $_smarty_tpl->tpl_vars['usuario']->value->getName();?>
 </a>
                     </li>
+                    <li>
+                        <a class="page-scroll" href="index.php?cerrar=1">Cerrar Sesion</a>
+                    </li>
                     <?php } else { ?>
                     <li>                    
                       <a class="page-scroll" data-toggle="modal" href="vistas/usuarios_login.tpl" data-target="#myModal">Ingresar</a>
@@ -71,7 +74,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
-    </nav>        u
+    </nav> 
     <div id="myModal" class="modal fade" >
         <div class="modal-dialog">
             <div class="modal-content">

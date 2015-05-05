@@ -12,7 +12,7 @@
         <a href="#" class="google"><i class="fa fa-google-plus fa-4x"></i><h4>Google+</h4></a>
     </div>
     <div class="col-md-7 separador">    
-        <form class="form-horizontal">
+        <form class="form-horizontal" method="POST" action="index.php">
         <fieldset>        
 
         <!-- Text input-->
