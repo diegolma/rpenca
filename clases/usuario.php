@@ -55,9 +55,13 @@ class usuario extends ClaseBase{
     //SETTERS
 
     public function setName($na){
-    	$this->nombre=$na;
+    	$this->Nombre=$na;
     }
 
+    public function setApellido($na){
+        $this->Apellido=$na;
+    }
+    
     public function setEmail($em){
     	$this->mail=$em;
     }
@@ -79,20 +83,19 @@ class usuario extends ClaseBase{
     }
     //AGREGAR 
 
-    public function agregar(){            
-    	$res=true;	//incializo 
+    public function agregar(){             
         $nombre=$this->getName();                
-        $aux=$this->getPass();
-        $password = sha1($aux);
+        $apellido=$this->getApellido();
+        $pass=$this->getPass();
         $email=$this->getEmail();                
-        $stmt = $this->getDB()->prepare("INSERT INTO usuarios(nombre,pass,email) VALUES (?,?,?)" );
-        $stmt->bind_param("sss",$nombre,$password,$email);            
+        $stmt = $this->getDB()->prepare("INSERT INTO usuarios(nombre,apellido,email,pass) VALUES (?,?,?,?)" );
+        $stmt->bind_param("ssss",$nombre,$password,$email);            
         $stmt->execute();        
-        $resultado =$stmt = $this->getDB()->query("SELECT * from  usuarios WHERE email='".$email."'");                    
-        if($resultado->num_rows<1){            
-            $res=false;
+        //$resultado =$stmt = $this->getDB()->query("SELECT * from  usuarios WHERE email='".$email."'");                    
+        if($resultado->affected_rows>0){            
+            return true;
         }                  
-        return $res;
+        return false;
     }
 
     //LOGIN 

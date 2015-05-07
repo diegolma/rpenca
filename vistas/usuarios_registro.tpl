@@ -1,3 +1,5 @@
+    
+
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 style="color:black">Registrarse</h4>
@@ -5,13 +7,15 @@
 <div class="modal-body">
   <br>
   <br>
-  <form class="form-horizontal">
+
+
+  <form class="form-horizontal" method="post" action="index.php" onsubmit="chekearSubmit(this)">
   <fieldset>
   <!-- Text input-->
   <div class="form-group">    
-    <div class="col-md-7 regi">
+    <div class="col-md-7 regi" id="divname">
     <a><i class="fa fa-user fa-2x registro"></i></a>
-    <input id="name" name="name" type="text" placeholder="Nombre" class="form-control input-md regis" required="">
+    <input id="name" name="name" type="text" placeholder="Nombre" class="form-control input-md regis" required="" >
       
     </div>
   </div>
@@ -29,7 +33,7 @@
   <div class="form-group">    
     <div class="col-md-7 regi">
       <a><i class="fa fa-envelope fa-2x registro"></i></a>
-      <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md regis" required="">
+      <input id="email" name="email" type="email" placeholder="Email" class="form-control input-md regis" required="">
       
     </div>
   </div>
@@ -42,7 +46,6 @@
       
     </div>
   </div>
-
   <!-- Password input-->
   <div class="form-group">    
     <div class="col-md-7 regi">

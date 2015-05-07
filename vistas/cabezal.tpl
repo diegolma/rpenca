@@ -1,3 +1,4 @@
+<script type="text/javascript" src="js/registro.js"></script>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">

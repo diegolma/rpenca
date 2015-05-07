@@ -4,6 +4,7 @@ require "clases/template.php";
 require_once "clases/Utils.php";
 require_once "clases/auth.php";
 require "vendor/autoload.php";
+require "libs/facebook-php-sdk-v4-4.0-dev/autoload.php";//pal facebook
 
 use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
@@ -30,6 +31,49 @@ use Facebook\FacebookRequestException;
 		$tpl->asignar('proyecto',"Penca");
 		$tpl->mostrar('usuarios_listado',$datos);
 	}*/
+
+	function logout(){
+		$usr= new Usuario();
+		$usr->logout();
+	}
+
+function getLogin(){
+	session_start();
+
+// Initialize the Facebook SDK.
+FacebookSession::setDefaultApplication( '1606231786259862', '47dd4cb4941076f7c287c977d2b84d1b' );
+$helper = new FacebookRedirectLoginHelper('http://localhost/clase7/fb_login.php');
+
+$loginUrl = $helper->getLoginUrl();
+	$mensaje="";
+	if(isset($_POST["email"])){
+		$usr= new Usuario();
+		
+		$email=$_POST["email"];
+		$pass=sha1($_POST["password"]);
+
+		if($usr->login($email,$pass)){
+			header('Location: index.php');
+			exit;
+		}else{
+			$mensaje="Error! No se pudo agregar el usuario";
+		}
+
+		
+	}
+	$tpl = new Template();
+	$tpl->asignar('titulo',"Nuevo Usuario");
+	$tpl->asignar('buscar',"");
+	$tpl->asignar('mensaje',$mensaje);
+	$tpl->asignar('proyecto',"Apps Web");
+	$tpl->asignar('loginUrl',$loginUrl);
+	$tpl->mostrar('usuarios_login',array());
+	
+
+}
+
+
+
 
 	function home(){
 		$tpl= new Template();
