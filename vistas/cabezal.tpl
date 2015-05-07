@@ -37,10 +37,10 @@
                     </li>
                     {else}
                     <li>                    
-                      <a class="page-scroll" data-toggle="modal" href="vistas/usuarios_login.tpl" data-target="#myModal">Ingresar</a>
+                      <a class="page-scroll" data-toggle="modal" href="#" data-target="#myModal">Ingresar</a>
                     </li>
                     <li>                    
-                      <a class="page-scroll" data-toggle="modal" href="vistas/usuarios_registro.tpl" data-target="#registro">Registrarse</a>
+                      <a class="page-scroll" data-toggle="modal" href="#" data-target="#registro">Registrarse</a>
                     </li>
                     {/if}
                 </ul>
@@ -49,17 +49,14 @@
         </div>
         <!-- /.container -->
     </nav> 
-    <div id="myModal" class="modal fade" >
-        <div class="modal-dialog">
-            <div class="modal-content">
-              
-            </div>
-        </div>
-    </div>
+ 
+{include file="usuarios_login.tpl"}
+
+    
     <div id="registro" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-              
+              {include file="usuarios_registro.tpl"}
             </div>
         </div>
     </div>

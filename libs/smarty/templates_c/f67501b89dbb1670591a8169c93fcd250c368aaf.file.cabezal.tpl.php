@@ -1,29 +1,29 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-05 02:34:27
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-07 03:47:04
          compiled from "vistas\cabezal.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:9620553edb7877ce27-82255756%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:13802554aabdeb70f73-28545034%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'f67501b89dbb1670591a8169c93fcd250c368aaf' => 
     array (
       0 => 'vistas\\cabezal.tpl',
-      1 => 1430784624,
+      1 => 1430962686,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '9620553edb7877ce27-82255756',
+  'nocache_hash' => '13802554aabdeb70f73-28545034',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_553edb78820f59_71085205',
+  'unifunc' => 'content_554aabdebbb307_00056729',
   'variables' => 
   array (
     'usuario' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_553edb78820f59_71085205')) {function content_553edb78820f59_71085205($_smarty_tpl) {?><nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<?php if ($_valid && !is_callable('content_554aabdebbb307_00056729')) {function content_554aabdebbb307_00056729($_smarty_tpl) {?><nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
@@ -63,10 +63,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     </li>
                     <?php } else { ?>
                     <li>                    
-                      <a class="page-scroll" data-toggle="modal" href="vistas/usuarios_login.tpl" data-target="#myModal">Ingresar</a>
+                      <a class="page-scroll" data-toggle="modal" href="#" data-target="#myModal">Ingresar</a>
                     </li>
                     <li>                    
-                      <a class="page-scroll" data-toggle="modal" href="vistas/usuarios_registro.tpl" data-target="#registro">Registrarse</a>
+                      <a class="page-scroll" data-toggle="modal" href="#" data-target="#registro">Registrarse</a>
                     </li>
                     <?php }?>
                 </ul>
@@ -75,17 +75,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         </div>
         <!-- /.container -->
     </nav> 
-    <div id="myModal" class="modal fade" >
-        <div class="modal-dialog">
-            <div class="modal-content">
-              
-            </div>
-        </div>
-    </div>
+ 
+<?php echo $_smarty_tpl->getSubTemplate ("usuarios_login.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
+
+    
     <div id="registro" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-              
+              <?php echo $_smarty_tpl->getSubTemplate ("usuarios_registro.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
             </div>
         </div>
     </div>

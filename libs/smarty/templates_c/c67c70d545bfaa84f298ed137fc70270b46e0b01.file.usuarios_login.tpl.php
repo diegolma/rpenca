@@ -1,4 +1,29 @@
-<div id="myModal" class="modal fade" >
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-07 03:47:04
+         compiled from "vistas\usuarios_login.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:30584554ac07e14f016-40894501%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'c67c70d545bfaa84f298ed137fc70270b46e0b01' => 
+    array (
+      0 => 'vistas\\usuarios_login.tpl',
+      1 => 1430962691,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '30584554ac07e14f016-40894501',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_554ac07e162899_29476417',
+  'variables' => 
+  array (
+    'urlFB' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_554ac07e162899_29476417')) {function content_554ac07e162899_29476417($_smarty_tpl) {?><div id="myModal" class="modal fade" >
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -11,7 +36,8 @@
             </div>
             <div class="modal-body">
                 <div class="col-md-5 social">
-                    <a href= {$urlFB} class="facebook"><i class="fa fa-facebook-square fa-4x"></i><h4>Facebook</h4></a>
+                    <a href= <?php echo $_smarty_tpl->tpl_vars['urlFB']->value;?>
+ class="facebook"><i class="fa fa-facebook-square fa-4x"></i><h4>Facebook</h4></a>
                     <a href="#" class="twitter"><i class="fa fa-twitter fa-4x"></i><h4>Twitter</h4></a>
                     <a href="#" class="google"><i class="fa fa-google-plus fa-4x"></i><h4>Google+</h4></a>
                 </div>
@@ -53,4 +79,4 @@
 
         </div>
     </div>
-</div>      
+</div>      <?php }} ?>
