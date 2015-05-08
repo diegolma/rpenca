@@ -37,47 +37,43 @@ use Facebook\FacebookRequestException;
 		$usr->logout();
 	}
 
-function getLogin(){
-	session_start();
+	function getLogin(){
+		session_start();
 
-// Initialize the Facebook SDK.
-FacebookSession::setDefaultApplication( '1606231786259862', '47dd4cb4941076f7c287c977d2b84d1b' );
-$helper = new FacebookRedirectLoginHelper('http://localhost/clase7/fb_login.php');
+		// Initialize the Facebook SDK.
+		FacebookSession::setDefaultApplication( '1606231786259862', '47dd4cb4941076f7c287c977d2b84d1b' );
+		$helper = new FacebookRedirectLoginHelper('http://localhost/clase7/fb_login.php');
 
-$loginUrl = $helper->getLoginUrl();
-	$mensaje="";
-	if(isset($_POST["email"])){
-		$usr= new Usuario();
-		
-		$email=$_POST["email"];
-		$pass=sha1($_POST["password"]);
+		$loginUrl = $helper->getLoginUrl();
+		$mensaje="";
+		if(isset($_POST["email"])){
+			$usr= new Usuario();
+			
+			$email=$_POST["email"];
+			$pass=sha1($_POST["password"]);
 
-		if($usr->login($email,$pass)){
-			header('Location: index.php');
-			exit;
-		}else{
-			$mensaje="Error! No se pudo agregar el usuario";
+			if($usr->login($email,$pass)){
+				header('Location: index.php');
+				exit;
+			}else{
+				$mensaje="Error! No se pudo agregar el usuario";
+			}
+
+			
 		}
-
-		
+		$tpl = new Template();
+		$tpl->asignar('titulo',"Nuevo Usuario");
+		$tpl->asignar('buscar',"");
+		$tpl->asignar('mensaje',$mensaje);
+		$tpl->asignar('proyecto',"Apps Web");
+		$tpl->asignar('loginUrl',$loginUrl);
+		$tpl->mostrar('usuarios_login',array());
 	}
-	$tpl = new Template();
-	$tpl->asignar('titulo',"Nuevo Usuario");
-	$tpl->asignar('buscar',"");
-	$tpl->asignar('mensaje',$mensaje);
-	$tpl->asignar('proyecto',"Apps Web");
-	$tpl->asignar('loginUrl',$loginUrl);
-	$tpl->mostrar('usuarios_login',array());
-	
-
-}
-
-
-
 
 	function home(){
 		$tpl= new Template();
 		$mensaje="";
+		$loginUrl="#";
 		if(isset($_GET["cerrar"])){//Cierro Sesion
 			$usr=new Usuario();
 			$usr->logout();
@@ -94,6 +90,31 @@ $loginUrl = $helper->getLoginUrl();
 				}else{
 					$mensaje="Error: Usuario o contraseña incorrectos.";
 				}
+			}
+		}elseif(isset($_POST["name"])){
+			if($_POST["password"]===$_POST["password2"]){
+				$usr=new Usuario();
+				if(!$usr->existe($_POST["email"])){
+					$usr->setName($_POST["name"]);
+					$usr->setApellido($_POST["lastname"]);
+					$usr->setEmail($_POST["email"]);
+					$usr->setPass(sha1($_POST["password"]));
+					if($usr->agregar()){
+						if($usr->login($usr->getEmail(),$usr->getPassword())){
+							header("location:dashboard.php");
+							exit;
+						}
+					}
+					else{
+						$mensaje="No se pudo dar de alta el nuevo usuario. Intentalo mas tarde";
+					}
+				}
+				else{
+					$mensaje="El e-mail seleccionado ya se encuentra en uso.";
+				}
+			}
+			else{
+				$mensaje="La contraseña y la confirmación deben coincidir";
 			}
 		}
 
@@ -150,7 +171,6 @@ $loginUrl = $helper->getLoginUrl();
 		    // Retrieve & store the access token in a session.
 		    $_SESSION['access_token'] = $session->getToken();
 		    // Logged in
-		    echo 'Successfully logged in!';
 
 		    try {
 
@@ -160,12 +180,13 @@ $loginUrl = $helper->getLoginUrl();
 
 				// Get response as an array
 			    $user = $request->getGraphObject()->asArray();
-
-			    //echo "Name: " . $user_profile->getName();
-			    print_r( $user );
-
-
-
+			    
+			    //mi codigo
+			    $usr=new Usuario();
+			    if($usr->existe($user["email"])){
+			    	$usr->agregarId(1, $user["id"], $user["email"]);
+			    }
+			    else{}
 
 			  } catch(FacebookRequestException $e) {
 

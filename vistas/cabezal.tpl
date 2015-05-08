@@ -31,7 +31,7 @@
                     -->
                     {if $usuario!=""}
                     <li>
-                        <a class="page-scroll">{$usuario->getName()}</a>
+                        <a class="page-scroll" href="dashboard.php">{$usuario->getName()}</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="index.php?cerrar=1">Cerrar Sesion</a>

@@ -9,7 +9,7 @@
   <br>
 
 
-  <form class="form-horizontal" method="post" action="index.php" onsubmit="chekearSubmit(this)">
+  <form class="form-horizontal" method="POST" action="index.php" onsubmit="chekearSubmit(this)">
   <fieldset>
   <!-- Text input-->
   <div class="form-group">    

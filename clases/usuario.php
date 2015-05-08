@@ -1,7 +1,7 @@
 <?php
 require_once "clases/clase_base.php";
 
-class usuario extends ClaseBase{	
+class Usuario extends ClaseBase{	
 
 	private $id;
     private $Nombre="";
@@ -52,6 +52,10 @@ class usuario extends ClaseBase{
         return $this->id_g;        
     }
 
+    public function getPassword(){
+        return $this->password;
+    }
+
     //SETTERS
 
     public function setName($na){
@@ -84,18 +88,14 @@ class usuario extends ClaseBase{
     //AGREGAR 
 
     public function agregar(){             
-        $nombre=$this->getName();                
-        $apellido=$this->getApellido();
-        $pass=$this->getPass();
-        $email=$this->getEmail();                
-        $stmt = $this->getDB()->prepare("INSERT INTO usuarios(nombre,apellido,email,pass) VALUES (?,?,?,?)" );
-        $stmt->bind_param("ssss",$nombre,$password,$email);            
-        $stmt->execute();        
-        //$resultado =$stmt = $this->getDB()->query("SELECT * from  usuarios WHERE email='".$email."'");                    
-        if($resultado->affected_rows>0){            
+        $resultado=$this->db->prepare("INSERT INTO USUARIOS (Nombre, Apellido, mail, password) VALUES (?,?,?,?)");
+        $resultado->bind_param("ssss",$this->Nombre, $this->Apellido, $this->mail, $this->password);
+        $resultado->execute();
+        if($resultado->affected_rows>0){
             return true;
-        }                  
-        return false;
+        }else{
+            return false;
+        }
     }
 
     //LOGIN 
@@ -109,7 +109,6 @@ class usuario extends ClaseBase{
         while($resultado->fetch()){
             Session::init();
             Session::set('id',$id);
-            echo "Entre aca";
             return true;
         }
         return false;
@@ -120,8 +119,46 @@ class usuario extends ClaseBase{
     public function logout(){
         Session::init();
         Session::destroy();
-        header('location: index.php');
+        header('location:index.php');
         exit();
         
-   }
+    }
+
+    public function existe($mail){
+        $resultado=$this->db->prepare("SELECT id FROM USUARIOS WHERE mail=?");
+        $resultado->bind_param("s",$mail);
+        $resultado->execute();
+        $resultado->bind_result($id);
+        while($resultado->fetch()){
+            return $id;
+        }
+        return false;
+    }
+
+    public function agregarId($tipo, $id, $mail){
+        //Se supone que existe el usuario
+        $user=$this->existe($mail);
+        if($user){
+            switch ($tipo){
+                case 1://FB
+                    $col="id_f";
+                break;
+                case 2://TW
+                    $col="id_t";
+                break;
+                case 3://G+
+                    $col="id_g";
+                break;
+            }
+            $resultado=$this->db->prepare("UPDATE USUARIOS SET $col = ? WHERE id = ?");
+            $resultado->bind_param("is", $id, $user);
+            $resultado->execute();
+            if($resultado->affected_rows>0){
+                echo "OK";
+            }
+            else{
+                echo "mal";
+            }
+        }
+    }
 }

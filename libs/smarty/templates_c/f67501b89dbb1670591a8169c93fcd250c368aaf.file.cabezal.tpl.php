@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-07 03:47:04
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-08 01:00:07
          compiled from "vistas\cabezal.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:13802554aabdeb70f73-28545034%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f67501b89dbb1670591a8169c93fcd250c368aaf' => 
     array (
       0 => 'vistas\\cabezal.tpl',
-      1 => 1430962686,
+      1 => 1431039588,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554aabdebbb307_00056729')) {function content_554aabdebbb307_00056729($_smarty_tpl) {?><nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<?php if ($_valid && !is_callable('content_554aabdebbb307_00056729')) {function content_554aabdebbb307_00056729($_smarty_tpl) {?><?php echo '<script'; ?>
+ type="text/javascript" src="js/registro.js"><?php echo '</script'; ?>
+>
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
@@ -55,7 +58,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     -->
                     <?php if ($_smarty_tpl->tpl_vars['usuario']->value!='') {?>
                     <li>
-                        <a class="page-scroll"><?php echo $_smarty_tpl->tpl_vars['usuario']->value->getName();?>
+                        <a class="page-scroll" href="dashboard.php"><?php echo $_smarty_tpl->tpl_vars['usuario']->value->getName();?>
 </a>
                     </li>
                     <li>

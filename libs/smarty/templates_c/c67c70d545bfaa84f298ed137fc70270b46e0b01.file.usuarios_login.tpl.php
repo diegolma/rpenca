@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-07 03:47:04
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-07 15:35:49
          compiled from "vistas\usuarios_login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:30584554ac07e14f016-40894501%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c67c70d545bfaa84f298ed137fc70270b46e0b01' => 
     array (
       0 => 'vistas\\usuarios_login.tpl',
-      1 => 1430962691,
+      1 => 1431005052,
       2 => 'file',
     ),
   ),
@@ -76,7 +76,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             </div>
             <div class="modal-footer">        
             </div>     
-
         </div>
     </div>
 </div>      <?php }} ?>
