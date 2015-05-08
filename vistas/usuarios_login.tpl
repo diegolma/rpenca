@@ -1,11 +1,13 @@
+<div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                     <div class="panel-heading">
-                        <h4 style="color:black">Iniciar Sesi&Oacuten o <a href="#">Reg&Iacutestrate</a></h4>                        
+                        <h4 style="color:black">Iniciar Sesi&oacute;n o <a href="#">Reg&iacute;strate</a></h4>                        
                     </div>
                 </div>
                 <div class="modal-body">        
-                        <form class="form-horizontal">
                         <fieldset>                                   
                                 <div class="row row-centered">
                                     <div class="col col-sm-4">
@@ -40,7 +42,7 @@
                                     <form action="" autocomplete="off" method="POST">
                                         <div class="input-group mar">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="email" class="form-control" name="username" placeholder="Email">
+                                            <input type="email" class="form-control" name="user" placeholder="Email">
                                         </div>                                                              
                                         <div class="input-group mar">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
@@ -61,8 +63,11 @@
                                         </p>
                                     </div>
                                 </div>              
-                        </fieldset>
-                        </form>    
+                        </fieldset>    
                         </div>
-    <div class="modal-footer">        
-    </div> 
+				</div>
+            <div class="modal-footer">        
+            </div>     
+        </div>
+    </div>
+</div>      
