@@ -4,20 +4,109 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+/*
+    Note: It is best to use a less version of this file ( see http://css2less.cc
+    For the media queries use @screen-sm-min instead of 768px.
+    For .omb_spanOr use @body-bg instead of white.
+*/
+
+.olv{
+    float: right;
+    font-size: 15px;
+    float: right;
+    color: black;
+}
+
+.dvi h4{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dvi{
+    color: black;
+    width: 20%;
+    float: left;
+}
+
+.izq{
+    width: 40%;
+    float: left;
+}
+
+.der{
+    width: 40%;
+    float: right;
+}
+
+.bot{
+    background-color: black;
+}
+
+.bot:hover{
+    background-color: #337ab7;
+}
+
+.mart{
+	margin-top:10px;
+}
+
+.mar{
+	margin-bottom: 10px;
+}
+
+.cac{ /*Ancho del modal*/
+	width:40% !important;
+}
+
+.sociales{
+    color: white !important;
+    font-size: 18px;    
+}
+
+.face{
+    background: black;
+}
+
+.face:hover{
+    background: #3b5998;
+    color: white;
+}
+
+.twitter{
+    background: black;    
+}
+
+.twitter:hover{
+    background: #00aced;
+    color: white;
+}
+
+.goog{
+    background: black;    
+}
+
+.goog:hover{
+    background: #c32f10;
+    color: white;
+}
+
 .btnconta{
     float: right;
     margin-right: 4%;
 }
 
-.btnconta button{
+.btnconta input{
     background-color: black; 
     border-color: black; 
     float: right;
+    margin-top: 10px;
 }
+
 
 .btnconta i{
     color: black;
     margin-left: 65%;
+    margin-top: 10px;
 }
 
 .contacto textarea{
