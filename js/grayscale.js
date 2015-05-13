@@ -4,6 +4,28 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+$(function(){
+    var tablaOculta2 = $( "#c" );
+    var tablaOculta = $( "#b" );
+    var tablaActual = $( "#actual" );
+    $( "a[name='b']" ).on( "click", function( event ) {
+        tablaActual.hide();
+        tablaOculta2.hide();
+        tablaOculta.show();                
+    });
+});                
+
+$(function(){
+    var tablaOculta2 = $( "#c" );
+    var tablaOculta = $( "#b" );
+    var tablaActual = $( "#actual" );
+    $( "a[name='c']" ).on( "click", function( event ) {
+        tablaActual.hide();
+        tablaOculta.hide();
+        tablaOculta2.show();                
+    });
+});                
+
 // jQuery to collapse the navbar on scroll
 $(window).scroll(function() {
     var altura = $("#prueba").height();
@@ -29,7 +51,7 @@ $(function() {
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
-
+/*
 // Google Maps Scripts
 // When the window has finished loading create our google map below
 google.maps.event.addDomListener(window, 'load', init);
@@ -176,4 +198,4 @@ function init() {
         map: map,
         icon: image
     });
-}
+}*/

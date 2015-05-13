@@ -1,9 +1,8 @@
 <?php
-require_once "db/db.php";
-
+require_once('db/db.php');
 class ClaseBase{
 	private $tabla;
-    protected $db;
+    private $db;
     private $modelo;
     
     public function __autoload($class) {
@@ -34,9 +33,10 @@ class ClaseBase{
     }
 
     public function obtenerPorId($id){
-        $sql="SELECT * FROM $this->tabla where id=$id";        
-        $res=array();
-        $resultado =$this->db->query($sql) or die ("Fallo en la consulta");
+        $sql="select * from $this->tabla where id=$id ";
+        $res=NULL;
+        $resultado =$this->db->query($sql)   
+            or die ("Fallo en la consulta");
          if($fila = $resultado->fetch_object()) {
            $res= new $this->modelo($fila);
         }
