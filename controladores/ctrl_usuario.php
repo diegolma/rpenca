@@ -214,6 +214,14 @@ use Facebook\FacebookRequestException;
 			$titulo="Perfil de Usuario";
 			$usr=new Usuario();
 			$usr=$usr->obtenerPorId(Session::get('id'));
+			
+			$email = "marceaplanalp@gmail.com";
+			$default = "mm";
+			$size = 225;
+			$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+
+			$usr->setAvatar($grav_url);
+			
 			$datos=array('usuario' => $usr,
 						 'mensaje' => $mensaje,
 						 'proyecto' => "Penca - Dashboard",

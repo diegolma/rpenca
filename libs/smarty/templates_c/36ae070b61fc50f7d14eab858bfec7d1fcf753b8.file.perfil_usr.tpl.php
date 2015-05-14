@@ -1,30 +1,30 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 02:34:26
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 07:52:19
          compiled from "vistas\perfil_usr.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2795554f7f2d70b944-59480466%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1765755543813c6ee70-06451355%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '36ae070b61fc50f7d14eab858bfec7d1fcf753b8' => 
     array (
       0 => 'vistas\\perfil_usr.tpl',
-      1 => 1431563660,
+      1 => 1431582496,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2795554f7f2d70b944-59480466',
+  'nocache_hash' => '1765755543813c6ee70-06451355',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_554f7f2d7ea3f7_94654264',
   'variables' => 
   array (
     'usuario' => 0,
     'pronostico' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_55543813e18b52_01875507',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554f7f2d7ea3f7_94654264')) {function content_554f7f2d7ea3f7_94654264($_smarty_tpl) {?><div class="row"><!--mensaje-->
+<?php if ($_valid && !is_callable('content_55543813e18b52_01875507')) {function content_55543813e18b52_01875507($_smarty_tpl) {?><div class="row"><!--mensaje-->
 	<div class="col-lg-12">
 		<div class="alert alert-info alert-dismissabe hide" id="msje">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
@@ -131,10 +131,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<i class="fa fa-picture-o"></i>
-				Ete so vo' guachin
+				Imágen de la Cuenta
 			</div>
-			<div class="panel-body">
-				<img alt="alta foto. Pero no se ve">
+			<div class="panel-body" style="text-align:center;">
+				<img alt="" src=<?php echo $_smarty_tpl->tpl_vars['usuario']->value->getAvatar();?>
+>
 			</div>
 		</div>
 	</div>

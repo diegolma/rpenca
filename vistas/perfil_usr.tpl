@@ -102,10 +102,10 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<i class="fa fa-picture-o"></i>
-				Ete so vo' guachin
+				Imágen de la Cuenta
 			</div>
-			<div class="panel-body">
-				<img alt="alta foto. Pero no se ve">
+			<div class="panel-body" style="text-align:center;">
+				<img alt="" src={$usuario->getAvatar()}>
 			</div>
 		</div>
 	</div>

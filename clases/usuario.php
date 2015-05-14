@@ -12,6 +12,7 @@ class Usuario extends ClaseBase{
     public $id_t = "";
     public $id_g = "";
 	private $password="";
+    private $avatar=NULL;
 
 	public function __construct($obj=NULL) {        
         if(isset($obj)){
@@ -57,6 +58,9 @@ class Usuario extends ClaseBase{
         return $this->password;
     }
 
+    public function getAvatar(){
+        return $this->avatar;
+    }
     //SETTERS
 
     public function setName($na){
@@ -85,6 +89,10 @@ class Usuario extends ClaseBase{
 
     public function setidG($g){
         $this->id_g=$g;
+    }
+
+    public function setAvatar($avat){
+        $this->avatar=$avat;
     }
     //AGREGAR 
 

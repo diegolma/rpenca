@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-08 23:52:08
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 07:52:15
          compiled from "vistas\cabezal.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:12492554d3008b14b98-95760449%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:93875554380fdba0f8-03962006%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '12492554d3008b14b98-95760449',
+  'nocache_hash' => '93875554380fdba0f8-03962006',
   'function' => 
   array (
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_554d3008b9d730_67276011',
+  'unifunc' => 'content_5554380fe62095_60649134',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554d3008b9d730_67276011')) {function content_554d3008b9d730_67276011($_smarty_tpl) {?><?php echo '<script'; ?>
+<?php if ($_valid && !is_callable('content_5554380fe62095_60649134')) {function content_5554380fe62095_60649134($_smarty_tpl) {?><?php echo '<script'; ?>
  type="text/javascript" src="js/registro.js"><?php echo '</script'; ?>
 >
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">

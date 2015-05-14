@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-08 23:52:08
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 07:52:15
          compiled from "vistas\usuarios_registro.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:21034554d3008cb6b77-93105426%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:324175554380ff1d8c9-84085088%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,15 +11,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '21034554d3008cb6b77-93105426',
+  'nocache_hash' => '324175554380ff1d8c9-84085088',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_554d3008cbe872_18000313',
+  'unifunc' => 'content_555438100219d2_38966559',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_554d3008cbe872_18000313')) {function content_554d3008cbe872_18000313($_smarty_tpl) {?><div class="modal-header">
+<?php if ($_valid && !is_callable('content_555438100219d2_38966559')) {function content_555438100219d2_38966559($_smarty_tpl) {?><div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 style="color:black">Registrarse</h4>
 </div>
