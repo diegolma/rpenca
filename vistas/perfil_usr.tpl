@@ -16,8 +16,8 @@
 			</div>
 			<div class="panel-body">
 				<ul class="list-group" id="datos">
-					<li class="list-group-item" id="nombre">
-						<strong>Nombre: </strong>{$usuario->getName()}
+					<li class="list-group-item">
+						<strong>Nombre: </strong><area></area><area>{$usuario->getName()}</area>
 						<a class="badge hide">
 							<i class="fa fa-pencil"></i>
 							 Editar
@@ -35,8 +35,8 @@
 							</button>
 						</form>
 					</li>
-					<li class="list-group-item" id="apellido">
-						<strong>Apellido: </strong>{$usuario->getApellido()}
+					<li class="list-group-item">
+						<strong>Apellido: </strong><area>{$usuario->getApellido()}</area>
 						<a class="badge hide">
 							<i class="fa fa-pencil"></i>
 							 Editar
@@ -54,10 +54,10 @@
 							</button>
 						</form>
 					</li>
-					<li class="list-group-item" id="email">
+					<li class="list-group-item">
 						<strong>E-mail: </strong>{$usuario->getEmail()}
 					</li>
-					<li class="list-group-item" id="password">
+					<li class="list-group-item">
 						<strong>Contrase&ntilde;a: </strong> **********
 						<a class="badge hide">
 							<i class="fa fa-pencil"></i>
@@ -209,6 +209,12 @@
 					    	</tr>
 					  	</tead>
 					  	<tbody>
+					  		{if !$usuario->pronosticos()}
+					  		<tr>
+					  			<td colspan="8"><span>No has realizado apuestas a&uacute;n</span></td>
+					  		</tr>
+					  		{/if}
+
 					    	{foreach from=$usuario->pronosticos() item=pronostico}
 					    	<tr>
 					    		<td>{$pronostico->getFecha()}</td>

@@ -7,7 +7,11 @@ $(document).ready(function(){
 	});
 
 	$('#datos li a.badge').click(function(){
-		$(this).parent().children('form').removeClass('hide');
+		if($(this).parent().children('form').hasClass('hide')){
+			$(this).parent().children('form').removeClass('hide');
+		}else{
+			$(this).parent().children('form').addClass('hide');
+		}
 		$(this).addClass('hide');
 	});
 
@@ -20,6 +24,12 @@ $(document).ready(function(){
 				$('#msje').removeClass('hide');
 			}
 		});
+		
+		var area = $(this).parent().children('area');
+		var cont =$(this).children('input:first').value();
+		area.empty();
+		area.text(cont);
+
 		$(this).addClass('hide');
 		return false;
 	});	
@@ -49,18 +59,6 @@ $(document).ready(function(){
 		$(this).parent().addClass('hide');
 		$('#cancelar').removeClass('hide');
 	});
-
-	/*$('#cancelar').parent().children('div').children('a.alert-link').click(function(){
-		$.ajax({
-			type: "POST",
-			url: "delete_usr.php",
-			data: null,
-			async: false,
-			success:function(){
-				$('body').html(index.php);
-			}
-		});
-	});*/
 });
 
 

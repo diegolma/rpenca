@@ -215,7 +215,7 @@ use Facebook\FacebookRequestException;
 			$usr=new Usuario();
 			$usr=$usr->obtenerPorId(Session::get('id'));
 			
-			$email = "marceaplanalp@gmail.com";
+			$email = $usr->getEmail();
 			$default = "mm";
 			$size = 225;
 			$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
@@ -243,8 +243,10 @@ use Facebook\FacebookRequestException;
 		$usr=new Usuario();
 		if(isset($_POST['editname'])){
 			$usr->editar($id, 'Nombre', $_POST['editname']);
+			echo $_POST['editname'];
 		}elseif(isset($_POST['editlastname'])){
 			$usr->editar($id, 'Apellido', $_POST['editlastname']);
+			echo $_POST['editlastname'];
 		}elseif(isset($_POST['oldpassword'])){
 			$usr=$usr->obtenerPorId($id);
 			$oldpass=sha1($_POST['oldpassword']);
