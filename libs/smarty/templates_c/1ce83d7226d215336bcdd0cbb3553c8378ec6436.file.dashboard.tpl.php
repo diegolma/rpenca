@@ -1,4 +1,32 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-13 03:06:58
+         compiled from "vistas\dashboard.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:12830554d25b53b1552-02904705%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '1ce83d7226d215336bcdd0cbb3553c8378ec6436' => 
+    array (
+      0 => 'vistas\\dashboard.tpl',
+      1 => 1431479103,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '12830554d25b53b1552-02904705',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_554d25b5490009_41175802',
+  'variables' => 
+  array (
+    'proyecto' => 0,
+    'usuario' => 0,
+    'titulo' => 0,
+    'vista' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_554d25b5490009_41175802')) {function content_554d25b5490009_41175802($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +37,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{$proyecto}</title>
+    <title><?php echo $_smarty_tpl->tpl_vars['proyecto']->value;?>
+</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -19,10 +48,18 @@
 
     <!-- Morris Charts CSS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-    <script src="js/cosas.js"></script>
+    <?php echo '<script'; ?>
+ src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="js/cosas.js"><?php echo '</script'; ?>
+>
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -30,8 +67,12 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"><?php echo '</script'; ?>
+>
     <![endif]-->
     <!--El favicon-->
     <link rel="icon" type="image/png" href="favicon.png">
@@ -58,7 +99,8 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {$usuario->getName()} <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_smarty_tpl->tpl_vars['usuario']->value->getName();?>
+ <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -95,10 +137,12 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">{$titulo}</h1>
+                    <h1 class="page-header"><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
+</h1>
                 </div>
             </div>
-            {include file=$vista}
+            <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['vista']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
             <!-- /.container-fluid -->
 
         </div>
@@ -108,16 +152,27 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <?php echo '<script'; ?>
+ src="js/jquery.js"><?php echo '</script'; ?>
+>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 
     <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
+    <?php echo '<script'; ?>
+ src="js/plugins/morris/raphael.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="js/plugins/morris/morris.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="js/plugins/morris/morris-data.js"><?php echo '</script'; ?>
+>
 
 </body>
 
 </html>
+<?php }} ?>

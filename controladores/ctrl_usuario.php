@@ -206,20 +206,56 @@ use Facebook\FacebookRequestException;
 		}
 	}
 
-	function dashboard(){
+	function dashboard($vista="", $titulo=""){
 		if(Auth::logueado()){
 			$tpl=new Template();
 			$mensaje="";
+			$vista="perfil_usr.tpl";
+			$titulo="Perfil de Usuario";
 			$usr=new Usuario();
 			$usr=$usr->obtenerPorId(Session::get('id'));
 			$datos=array('usuario' => $usr,
 						 'mensaje' => $mensaje,
-						 'proyecto' => "Penca - Dashboard");
+						 'proyecto' => "Penca - Dashboard",
+						 'titulo' =>$titulo,
+						 'vista' => $vista);
 			$tpl->mostrar('dashboard',$datos);
 		}else{
 			header("location:index.php");
 			exit;
 		}
+	}
 
+	function editar(){
+		if(!Auth::logueado()){
+			header('location:index.php');
+			exit;
+		}
+		$id=Session::get('id');
+		$usr=new Usuario();
+		if(isset($_POST['editname'])){
+			$usr->editar($id, 'Nombre', $_POST['editname']);
+		}elseif(isset($_POST['editlastname'])){
+			$usr->editar($id, 'Apellido', $_POST['editlastname']);
+		}elseif(isset($_POST['oldpassword'])){
+			$usr=$usr->obtenerPorId($id);
+			$oldpass=sha1($_POST['oldpassword']);
+			if($oldpass===$usr->getPassword()){
+				if($_POST['password']==$_POST['repassword']){
+					$usr->editar($id, 'password', sha1($_POST['password']));
+				}
+			}
+		}
+	}
+
+	function borrarse(){
+		if(Auth::logueado()){
+			$usr=new Usuario();
+			$usr=$usr->obtenerPorId(Session::get('id'));
+			$usr->baja();
+			Session::destroy();
+		}
+		header('location:index.php');
+		exit;
 	}
 ?>

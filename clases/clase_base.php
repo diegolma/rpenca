@@ -2,7 +2,7 @@
 require_once('db/db.php');
 class ClaseBase{
 	private $tabla;
-    private $db;
+    protected $db;
     private $modelo;
     
     public function __autoload($class) {

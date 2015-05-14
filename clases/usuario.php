@@ -1,5 +1,6 @@
 <?php
 require_once "clases/clase_base.php";
+require_once "clases/pronostico.php";
 
 class Usuario extends ClaseBase{	
 
@@ -159,6 +160,97 @@ class Usuario extends ClaseBase{
             else{
                 echo "mal";
             }
+        }
+    }
+
+    public function pronosticos(){
+        $resultados = array();
+        $sql="SELECT fecha, selA.nombre, eA.goles, eB.goles, selB.nombre, proA.goles, proB.goles
+              FROM ((((((pronostica as proA JOIN pronostica as proB ON proA.id_partido=proB.id_partido AND proA.id_usuario=proB.id_usuario AND proA.id_seleccion>proB.id_seleccion) JOIN selecciones as selA ON selA.id=proA.id_seleccion) JOIN selecciones as selB ON selB.id=proB.id_seleccion) JOIN entre as eA ON eA.id_p=proA.id_partido AND eA.id_s=proA.id_seleccion) JOIN entre as eB ON eB.id_p=proA.id_partido AND eB.id_s=proB.id_seleccion) JOIN partidos as P ON P.id=proA.id_partido)
+              WHERE proA.id_usuario=?";
+        $resultado=$this->db->prepare($sql);
+        $resultado->bind_param("i", $this->id);
+        $resultado->execute();
+        $resultado->bind_result($fecha, $nomA, $golA, $golB, $nomB, $proA, $proB);
+        while($resultado->fetch()){
+            $pron=new Pronostico();
+            $pron->setFecha($fecha);
+            $pron->setSelA($nomA);
+            $pron->setSelB($nomB);
+            $pron->setGolesA($golA);
+            $pron->setGolesB($golB);
+            $pron->setPronA($proA);
+            $pron->setPronB($proB);
+            $resultados[]=$pron;
+        }
+        return $resultados;
+    }
+
+    public function editar($id, $key, $valor){
+        $sql="UPDATE USUARIOS SET $key=? WHERE id=?";
+        $resultado=$this->db->prepare($sql);
+        $resultado->bind_param("si",$valor, $id);
+        $resultado->execute();
+        if($resultado->affected_rows>0){
+            return true;
+        }
+        else{
+            return false;
+        }   
+    }
+
+    public function baja(){
+        $id=$this->id;
+        $sql="DELETE FROM USUARIOS WHERE id=?";
+        $sql2="DELETE FROM PRONOSTICA WHERE id_usuario=?";
+        
+        $res=$this->db->prepare($sql2);
+        $res->bind_param("i",$id);
+        $res->execute();
+
+        $res=$this->db->prepare($sql);
+        $res->bind_param("i",$id);
+        $res->execute();
+
+        if($res->affected_rows>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function estadisticas($requiere='pronosticos'){
+        $pron=$this->pronosticos();
+        $pronosticos=count($pron);
+        $aciertos=0;
+        $exactos=0;
+        $puntos=0;
+        foreach ($pron as $key => $pronos) {
+            if($pronos->puntos()>=3){
+                $aciertos++;
+                if($pronos->puntos()>=6){
+                    $exactos++;
+                }
+            }
+            $puntos+=$pronos->puntos();
+        }
+        switch ($requiere) {
+            case 'pronosticos':
+                return $pronosticos;
+                break;
+            case 'aciertos':
+                return $aciertos;
+                break;
+            case 'exactos':
+                return $exactos;
+                break;
+            case 'puntos':
+                return $puntos;
+                break;
+            
+            default:
+                return "No definido";
+                break;
         }
     }
 }

@@ -1,4 +1,25 @@
-<div class="modal-header">
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-08 23:52:08
+         compiled from "vistas\usuarios_registro.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:21034554d3008cb6b77-93105426%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '04c762942580ab7af9208317b9adb46142ccd912' => 
+    array (
+      0 => 'vistas\\usuarios_registro.tpl',
+      1 => 1431119825,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '21034554d3008cb6b77-93105426',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_554d3008cbe872_18000313',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_554d3008cbe872_18000313')) {function content_554d3008cbe872_18000313($_smarty_tpl) {?><div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 style="color:black">Registrarse</h4>
 </div>
@@ -66,3 +87,4 @@
 </div>
 <div class="modal-footer">
 </div>
+<?php }} ?>
