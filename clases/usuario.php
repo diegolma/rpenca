@@ -97,7 +97,7 @@ class Usuario extends ClaseBase{
     //AGREGAR 
 
     public function agregar(){             
-        $resultado=$this->db->prepare("INSERT INTO USUARIOS (Nombre, Apellido, mail, password) VALUES (?,?,?,?)");
+        $resultado=$this->getDB()->prepare("INSERT INTO USUARIOS (Nombre, Apellido, mail, password) VALUES (?,?,?,?)");
         $resultado->bind_param("ssss",$this->Nombre, $this->Apellido, $this->mail, $this->password);
         $resultado->execute();
         if($resultado->affected_rows>0){
@@ -110,7 +110,7 @@ class Usuario extends ClaseBase{
     //LOGIN 
 
     public function login($email,$pass){
-        $resultado =$this->db->prepare("SELECT * FROM USUARIOS WHERE mail=? AND password=?");
+        $resultado =$this->getDB()->prepare("SELECT * FROM USUARIOS WHERE mail=? AND password=?");
         $resultado->bind_param("ss", $email, $pass);
         $resultado->execute();
         $resultado->bind_result($id, $nombre, $apellido, $mail, $password, $id_f, $id_t, $id_g, $avatar);
@@ -134,7 +134,7 @@ class Usuario extends ClaseBase{
     }
 
     public function existe($mail){
-        $resultado=$this->db->prepare("SELECT id FROM USUARIOS WHERE mail=?");
+        $resultado=$this->getDB()->prepare("SELECT id FROM USUARIOS WHERE mail=?");
         $resultado->bind_param("s",$mail);
         $resultado->execute();
         $resultado->bind_result($id);
@@ -159,7 +159,7 @@ class Usuario extends ClaseBase{
                     $col="id_g";
                 break;
             }
-            $resultado=$this->db->prepare("UPDATE USUARIOS SET $col = ? WHERE id = ?");
+            $resultado=$this->getDB()->prepare("UPDATE USUARIOS SET $col = ? WHERE id = ?");
             $resultado->bind_param("is", $id, $user);
             $resultado->execute();
             if($resultado->affected_rows>0){

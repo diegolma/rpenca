@@ -1,5 +1,6 @@
 <?php
 require_once "clase_base.php";
+require_once "config/config.php";
 class seleccion extends ClaseBase
 {
 	private $id="";
@@ -13,6 +14,7 @@ class seleccion extends ClaseBase
 	private $jugados=0;
 	private $puntos=0;
     private $pos=4;
+    private $consulta = ""; //para hacer el pedido de un equipo
 
 	function __construct($obj=NULL)
 	{
@@ -27,6 +29,22 @@ class seleccion extends ClaseBase
 
 
 	//GETTERS
+    public function getConsulta(){
+        return $this->consulta;
+    }
+
+    public function setConsulta($id){
+        $a = BODY_API;
+        $a .= KEY_API;
+        $a .= '&req=team&id=';
+        $a .= $id;
+        $this->consulta = $a;
+    }
+
+    public function getId(){
+        return $this->id;
+    }
+
     public function getPos(){
         return $this->pos;
     }
@@ -64,6 +82,9 @@ class seleccion extends ClaseBase
 	}
 
     //SETTERS
+    public function setId($i){
+        $this->id=$i;
+    }
 
     public function setPos($po){
         $this->pos=$po;

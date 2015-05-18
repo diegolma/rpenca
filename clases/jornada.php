@@ -11,6 +11,15 @@ class jornada extends ClaseBase
 	private $hora="";
 	private $minutos="";
 	private $resultado="";
+	private $idLocal="";
+	private $idVisitante="";
+	//para el historico agrego
+	private $competition="";
+	private $anio="";
+	private $golL=0;
+	private $golV=0;
+
+	private $historico = array();
 
 	function __construct($obj=NULL)
 	{
@@ -21,6 +30,22 @@ class jornada extends ClaseBase
 		}
 		 $tabla="jornada";
        	 parent::__construct($tabla);		
+	}
+
+	public function getIdLocal(){
+		return $this->idLocal;
+	}
+
+	public function setIdLocal($il){
+		$this->idLocal=$il;
+	}
+
+	public function getIdVisitante(){
+		return $this->idVisitante;
+	}
+
+	public function setIdVisitante($iv){
+		$this->idVisitante=$iv;
 	}
 
 	public function getId(){
@@ -95,5 +120,44 @@ class jornada extends ClaseBase
 		$this->resultado = $resultado;
 	}
 
+	public function getCompetition(){
+		return $this->competition;
+	}
+
+	public function setCompetition($competition){
+		$this->competition = $competition;
+	}
+
+	public function getAnio(){
+		return $this->anio;
+	}
+
+	public function setAnio($anio){
+		$this->anio = $anio;
+	}
+
+	public function getGolL(){
+		return $this->golL;
+	}
+
+	public function setGolL($golL){
+		$this->golL = $golL;
+	}
+
+	public function getGolV(){
+		return $this->golV;
+	}
+
+	public function setGolV($golV){
+		$this->golV = $golV;
+	}
+
+	public function getHistorico(){
+		return $this->historico;
+	}
+
+	public function setHistorico($ho){
+		$this->historico=$ho;
+	}
 }
 ?>

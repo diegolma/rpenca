@@ -3,6 +3,7 @@ require "clases/usuario.php";
 require "clases/template.php";
 require_once "clases/Utils.php";
 require_once "clases/auth.php";
+require_once "ctrl_api.php";
 require "vendor/autoload.php";
 require "libs/facebook-php-sdk-v4-4.0-dev/autoload.php";//pal facebook
 
@@ -74,7 +75,12 @@ use Facebook\FacebookRequestException;
 		$tpl= new Template();
 		$mensaje="";
 		$loginUrl="#";
-		if(isset($_GET["cerrar"])){//Cierro Sesion
+		if(isset($_GET["pais"])){			
+			$pedido = BODY_API.KEY_API.'&req=team&id='.$_GET["pais"];
+			infoPais(pedir($pedido));
+			exit;
+		}
+		elseif(isset($_GET["cerrar"])){//Cierro Sesion
 			$usr=new Usuario();
 			$usr->logout();
 		}

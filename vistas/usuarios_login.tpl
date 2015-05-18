@@ -4,7 +4,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                     <div class="panel-heading">
-                        <h4 style="color:black">Iniciar Sesi&oacute;n o <a href="#">Reg&iacute;strate</a></h4>                        
+                        <h4 style="color:black">Iniciar Sesi&oacute;n o <a class="page-scroll" data-toggle="modal" href="#" data-target="#registro">Reg&iacute;strate</a></h4>                        
                     </div>
                 </div>
                 <div class="modal-body">        

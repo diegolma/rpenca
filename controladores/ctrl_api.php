@@ -64,7 +64,7 @@ function infoGrupo($arrayMulti){
 		$escudo = $value["shield"];
 	
 		$seleccion = new seleccion();
-        $seleccion->setIdSeleccion($id);
+        $seleccion->setIdSeleccion($id);        
         $seleccion->setNombre($pais);
         $seleccion->setPuntos($puntos);
         $seleccion->setVictorias($victorias);
@@ -90,44 +90,18 @@ function infoGrupo($arrayMulti){
         $ret[$index] = $seleccion;
     }
     ksort($ret);    
-    $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo;    
     $jornadas = array();
+    $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo."&round=1";        
     $jornadas = jornada(pedir($pedido));    //esta es la jornada actual de ese grupo
     $jornadasB = array();
-    $jornadasC = array();
-    $actual = jornadaActual(pedir($pedido));
-    $b = 0;
-    $c = 0;
-    switch ($actual) {
-         case '1':
-             $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo."&round=2";
-             $jornadasB = jornada(pedir($pedido));
-             $b = 2;
-             $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo."&round=3";
-             $jornadasC = jornada(pedir($pedido));
-             $c = 3;
-             break;
-         case '2':
-             $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo."&round=1";
-             $jornadasB = jornada(pedir($pedido));
-             $b = 1;
-             $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo."&round=3";
-             $jornadasC = jornada(pedir($pedido));
-             $c = 3;
-             break;
-         case '3':
-             $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo."&round=1";
-             $jornadasB = jornada(pedir($pedido));
-             $b = 1;
-             $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo."&round=2";
-             $jornadasC = jornada(pedir($pedido));
-             $c = 2;
-             break;             
-     }  
-
+    $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo."&round=2";    
+    $jornadasB = jornada(pedir($pedido));    //esta es la jornada actual de ese grupo
+    $jornadasC = array();    
+    $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo."&round=3";    
+    $jornadasC = jornada(pedir($pedido));    //esta es la jornada actual de ese grupo
 
     $tpl = new Template();
-    $datos = array('selecciones' => $ret, 'num' => $grupo, 'jornadas' => $jornadas, 'jornadasB' => $jornadasB, 'jornadasC' => $jornadasC, 'actual' => $actual, 'b' => $b, 'c' => $c);
+    $datos = array('selecciones' => $ret, 'num' => $grupo, 'jornadas' => $jornadas, 'jornadasB' => $jornadasB, 'jornadasC' => $jornadasC);
     $tpl->mostrar('info_grupo',$datos);
 }
 
@@ -193,9 +167,17 @@ function jornada($arrayMulti){
         $hora = $value["hour"] + 5;
         $minutos = $value["minute"];
         $resultado = $value["result"];        
+        $idLocal = $value["dteam1"];
+        $idVisitante = $value["dteam2"];
+
+        if($resultado=="x-x"){
+            $resultado=0;
+        }
 
         $jornada = new jornada();
         $jornada->setId($id);
+        $jornada->setIdLocal($idLocal);
+        $jornada->setIdVisitante($idVisitante);
         $jornada->setLocal($local);
         $jornada->setVisitante($visitante);
         $jornada->setEscudoLocal($escudoLocal);
@@ -204,18 +186,42 @@ function jornada($arrayMulti){
         $jornada->setHora($hora);
         $jornada->setMinutos($minutos);
         $jornada->setResultado($resultado);
+
+        $pedido = BODY_API.KEY_API.'&req=teams_history&teams='.$idLocal.','.$idVisitante.'&id='.$id.'&year=2015';
+        $jornada->setHistorico(historico(pedir($pedido)));
+
         $ret[]=$jornada;
     }
 
     return $ret;
 }
 
-function jornadaActual($arrayMulti){
-    $ret = 1;
-    foreach ($arrayMulti["match"] as $key => $value) {
-        $ret = $value["round"];
-    }    
-    return $ret;
+function historico($arrayMulti){
+    $ret = array();
+    foreach ($arrayMulti["matches"] as $key => $value) {
+        $golLocal = $value["local_goals"];
+        $golVisitante = $value["visitor_goals"];
+        $fecha = $value["shedule"];
+        $local = $value["local"];
+        $visitante = $value["visitor"];
+        $competicion = $value["competition_name"];
+        $anio = $value["year"];
+
+        $jornada = new jornada();
+        $jornada->setLocal($local);
+        $jornada->setVisitante($visitante);
+        $jornada->setFecha($fecha);
+        $jornada->setCompetition($competicion);
+        $jornada->setAnio($anio);
+        $jornada->setGolL($golLocal);
+        $jornada->setGolV($golVisitante);
+        $ret[]=$jornada;
+    }
+        return $ret;
+    /*$tpl = new template();
+    $datos = array('historicos' => $ret);
+    $tpl->mostrar('timeline',$datos);*/
 }
+
 
 ?>

@@ -18,13 +18,15 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <title>{$proyecto}</title>
+    <title>{$proyecto}</title>    
 
 </head>
 
@@ -239,7 +241,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">{$jugados}</div>
-                                        <div>Jugados</div>
+                                        <div>Partidos</div>
                                     </div>
                                 </div>
                             </div>
@@ -263,18 +265,18 @@
                 </div>
                 <!-- /.row -->
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-lg-8">
 						<h2>Plantilla</h2>
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
+						<div class="table-responsive" id="planti">
+							<table class="table table-bordered table-hover table-striped" id="dataTables-example">
 								<thead>
 									<tr>
 										<th>Jugador</th>
 										<th>Posici&oacute;n</th>										
-										<th>Goles</th>
-										<th>Amarillas</th>
-										<th>Rojas</th>
-										<th>Foto</th>
+										<th><i class="fa fa-futbol-o"></i></th>
+										<th><i class="fa fa-file-o" style="background-color:yellow"></i></th>
+										<th><i class="fa fa-file-o" style="background-color:red"></i></th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -298,7 +300,7 @@
                     <div class="col-lg-4">
                         <h2>Informaci&oacute;n</h2>
 						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
+							<table class="table table-bordered table-hover table-striped" id="info">
 								<tbody>
 									<tr>
 										<th>Presidente</th>
@@ -351,4 +353,8 @@
     <!-- Morris Charts JavaScript -->
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>    
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/grayscale.js"></script>        
+    <script type="text/javascript" src="libs/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/dataTables.bootstrap.js"></script>

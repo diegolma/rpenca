@@ -131,7 +131,7 @@
                     <div class="form-group">                      
                       <div class="col-md-5 btnconta">
                         <a><i class="fa fa-paper-plane fa-2x"></i></a>
-                        <button id="enviar" name="enviar" class="btn btn-primary">Enviar</button>
+                        <button id="enviar" name="enviar" class="btn btn-sm mar bot sociales">Enviar</button>
                       </div>
                     </div>
 

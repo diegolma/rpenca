@@ -2,65 +2,41 @@
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 style="color:black">Registrarse</h4>
 </div>
-<div class="modal-body">
-  <br>
-  <br>
-
-
+<div class="modal-body">  
   <form class="form-horizontal" method="POST" action="index.php" onsubmit="chekearSubmit(this)">
   <fieldset>
-  <!-- Text input-->
-  <div class="form-group">    
-    <div class="col-md-7 regi" id="divname">
-    <a><i class="fa fa-user fa-2x registro"></i></a>
-    <input id="name" name="name" type="text" placeholder="Nombre" class="form-control input-md regis" required="" >
-      
-    </div>
-  </div>
+  <!-- Text input-->  
+    <div class="input-group mar">
+      <span class="input-group-addon"><i class="fa fa-user registro"></i></span>
+      <input id="name" name="name" type="text" placeholder="Nombre" class="form-control" required="" >      
+    </div>  
 
-  <!-- Text input-->
-  <div class="form-group">    
-    <div class="col-md-7 regi">
-    <a><i class="fa fa-user fa-2x registro"></i></a>
-    <input id="lastname" name="lastname" type="text" placeholder="Apellido" class="form-control input-md regis" required="">
-      
-    </div>
-  </div>
+  <!-- Text input-->  
+    <div class="input-group mar">
+      <span class="input-group-addon"><i class="fa fa-user registro"></i></span>
+      <input id="lastname" name="lastname" type="text" placeholder="Apellido" class="form-control" required="">      
+    </div>  
 
-  <!-- Text input-->
-  <div class="form-group">    
-    <div class="col-md-7 regi">
-      <a><i class="fa fa-envelope fa-2x registro"></i></a>
-      <input id="email" name="email" type="email" placeholder="Email" class="form-control input-md regis" required="">
-      
-    </div>
-  </div>
+  <!-- Text input-->  
+    <div class="input-group mar">
+      <span class="input-group-addon"><i class="fa fa-envelope registro"></i></span>
+      <input id="email" name="email" type="email" placeholder="Email" class="form-control" required="">    
+    </div>  
 
-  <!-- Password input-->
-  <div class="form-group">    
-    <div class="col-md-7 regi">
-      <a><i class="fa fa-key fa-2x registro"></i></a>
-      <input id="password" name="password" type="password" placeholder="Contraseña" class="form-control input-md regis" required="">
-      
-    </div>
-  </div>
-  <!-- Password input-->
-  <div class="form-group">    
-    <div class="col-md-7 regi">
-      <a><i class="fa fa-key fa-2x registro"></i></a>
-      <input id="password2" name="password2" type="password" placeholder="Repetir contraseña" class="form-control input-md regis" required="">
-      
-    </div>
-  </div>
-  <br>
-  <br>
-  <!-- Button -->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="confirmar"></label>
-    <div class="col-md-6 btnreg" >
-      <button id="confirmar" name="confirmar" class="btn btn-primary">Registrarse</button>      
-    </div>
-  </div>
+  <!-- Password input-->  
+    <div class="input-group mar">
+      <span class="input-group-addon"><i class="fa fa-key registro"></i></span>
+      <input id="password" name="password" type="password" placeholder="Contraseña" class="form-control" required="">      
+    </div>  
+
+  <!-- Password input-->  
+    <div class="input-group mar">
+        <span class="input-group-addon"><i class="fa fa-key registro"></i></span>
+        <input id="password2" name="password2" type="password" placeholder="Repetir contraseña" class="form-control" required="">      
+    </div>  
+  <br>  
+  <!-- Button -->  
+    <button id="confirmar" name="confirmar" class="btn btn-sm mar bot sociales btn-block">Registrarse</button>            
   </fieldset>
   </form>
 </div>

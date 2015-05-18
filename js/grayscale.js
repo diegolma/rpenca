@@ -4,27 +4,48 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-$(function(){
-    var tablaOculta2 = $( "#c" );
-    var tablaOculta = $( "#b" );
-    var tablaActual = $( "#actual" );
-    $( "a[name='b']" ).on( "click", function( event ) {
-        tablaActual.hide();
-        tablaOculta2.hide();
-        tablaOculta.show();                
-    });
-});                
+$('[data-toggle="popo"]').popover({            
+            html: 'true',
+            trigger: 'focus',
+            placement: 'right',
+            tittle: 'Histórico'
+});
+
+$('[data-toggle="popo"]').click(function(){
+    $( "ul li:nth-child(2n)" ).addClass("timeline-inverted");
+});
 
 $(function(){
-    var tablaOculta2 = $( "#c" );
-    var tablaOculta = $( "#b" );
-    var tablaActual = $( "#actual" );
-    $( "a[name='c']" ).on( "click", function( event ) {
-        tablaActual.hide();
-        tablaOculta.hide();
-        tablaOculta2.show();                
+    $('#dataTables-example').DataTable({
+        pageLength : 4,
+        lengthChange : false,
+        info : false,        
+        language: {
+            processing:     "Procesando...",
+            search:         "Buscar:",
+            lengthMenu:     "Mostrar _MENU_ registros",
+            info:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            infoEmpty:      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            infoFiltered:   "(filtrado de un total de _MAX_ registros)",
+            infoPostFix:    "",
+            loadingRecords: "Cargando...",
+            zeroRecords:    "No se encontraron resultados",
+            emptyTable:     "Ningún dato disponible en esta tabla",
+            paginate: {
+                first:      "Primero",
+                previous:   "Anterior",
+                next:       "Siguiente",
+                last:       "Último"
+            },
+            aria: {
+                sortAscending:  ": Activar para ordenar la columna de manera ascendente",
+                sortDescending: ": Activar para ordenar la columna de manera descendente"
+            }
+        }
     });
-});                
+});
+
+$('#planti').css("overflow-x", "hidden");    
 
 // jQuery to collapse the navbar on scroll
 $(window).scroll(function() {
