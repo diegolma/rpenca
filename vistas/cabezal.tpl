@@ -1,4 +1,3 @@
-<script type="text/javascript" src="js/registro.js"></script>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -12,7 +11,7 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="elmenu">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden">
                       <a href="#page-top"></a>
@@ -38,10 +37,10 @@
                     </li>
                     {else}
                     <li>                    
-                      <a class="page-scroll" data-toggle="modal" href="#" data-target="#myModal">Ingresar</a>
+                      <a class="" data-toggle="modal" href="#" data-target="#myModal">Ingresar</a>
                     </li>
                     <li>                    
-                      <a class="page-scroll" data-toggle="modal" href="#" data-target="#registro">Registrarse</a>
+                      <a class="" data-toggle="modal" href="#" data-target="#registro">Registrarse</a>
                     </li>
                     {/if}
                 </ul>

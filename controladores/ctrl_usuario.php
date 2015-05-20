@@ -59,8 +59,6 @@ use Facebook\FacebookRequestException;
 			}else{
 				$mensaje="Error! No se pudo agregar el usuario";
 			}
-
-			
 		}
 		$tpl = new Template();
 		$tpl->asignar('titulo',"Nuevo Usuario");
@@ -94,7 +92,8 @@ use Facebook\FacebookRequestException;
 					header("location:dashboard.php");
 					exit;
 				}else{
-					$mensaje="Error: Usuario o contraseña incorrectos.";
+					echo "Error: Usuario o contraseña incorrectos.";
+					exit;
 				}
 			}
 		}elseif(isset($_POST["name"])){
@@ -273,5 +272,87 @@ use Facebook\FacebookRequestException;
 		}
 		header('location:index.php');
 		exit;
+	}
+
+	function olvidada(){
+		$mensaje="";
+		$usr="";
+		$estilo="";
+		$id="";
+		$vista='reseteo_pass';
+		if(isset($_POST['mail'])){
+			$vista="alert";
+			$mail=$_POST['mail'];
+			$usr=new Usuario();
+			if($usr->existe($mail)){#true si existe el usuario
+				Utils::reseteo($mail);
+				$mensaje="Te enviamos un mensaje con las instrucciones 
+						para reestablecer tu contrase&ntilde;a a $mail.";
+				$estilo="alert alert-success";
+			}else{
+				$mensaje="El e-mail ingresado no está registrado.";
+				$estilo="alert alert-danger";
+			}
+		}elseif(isset($_GET['usr']) && isset($_GET['dt']) && isset($_GET['dte'])){
+			#viene desde el link enviado
+			#el mail codificado con sha1, dt fecha y hora de envio, dte = sha1(dte)->para corroborar
+			$dt=$_GET['dt'];//ya es un int
+			$dte=$_GET['dte'];
+			$shamail=$_GET['usr'];
+			if(sha1($dt)==$dte){//confirmacion de que no se haya alterado la uri.
+				$date=new DateTime();
+				$date=$date->getTimestamp();//pasa una fecha/hora comun a unix
+				if($date-$dt<=7200){//7200 son los segundos en 2hs 
+					//se procede con el reseteo.
+					$usr=new Usuario();
+					if(!$usr->getUsrXshaMail($shamail)){
+						$mensaje="La URL ingresada es inválida o ha expirado.";
+					}
+					else{
+						$vista="passyrepass";
+						$id=$usr->getId();
+						$usr="";
+					}
+				}
+			}
+			else{
+				
+				$mensaje="La URL ingresada es inválida o ha expirado.";
+			}
+		}elseif(isset($_POST['pass']) && isset($_POST['repass']) && isset($_POST['id'])){
+			if($_POST['pass']==$_POST['repass']){
+				$usr=(new Usuario())->obtenerPorId($_POST['id']);
+				$usr->editar($_POST['id'], 'password', sha1($_POST['pass']));
+				$usr->login($usr->getEmail(), sha1($_POST['pass']));
+				header('location:dashboard.php');
+				exit;
+			}
+			else{
+				$mensaje='La contraseña y la confirmación deben coincidir.<br>
+						  <a href="" class="alert-link">Intenta de nuevo</a>';
+				$vista="alert";
+				$estilo="alert alert-danger";
+			}
+		}
+		$loginUrl="";
+		if($vista!="alert"){
+			session_start();
+			FacebookSession::setDefaultApplication('755532661231775','b19d557f899b36d2721f81c70d0c0b05');
+			$helper = new FacebookRedirectLoginHelper('http://localhost/penca/trunk/loginFB.php');
+			$permissions = array(
+				   'scope' => 'public_profile,email'
+				);
+			$loginUrl = $helper->getLoginUrl($permissions);
+		}
+
+		$tpl=new Template();
+		$datos=array(
+			'usuario' => $usr,
+			'id' => $id,
+			'mensaje' => $mensaje,
+			'estilo' => $estilo,
+			'urlFB' => $loginUrl
+		);
+		$tpl->mostrar($vista,$datos);
 	}
 ?>

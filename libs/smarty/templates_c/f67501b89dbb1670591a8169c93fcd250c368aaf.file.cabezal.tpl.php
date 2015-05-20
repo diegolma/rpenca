@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 08:05:38
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-19 23:49:43
          compiled from "vistas\cabezal.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2471155543b32015655-13907697%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f67501b89dbb1670591a8169c93fcd250c368aaf' => 
     array (
       0 => 'vistas\\cabezal.tpl',
-      1 => 1431039588,
+      1 => 1432072177,
       2 => 'file',
     ),
   ),
@@ -15,18 +15,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_55543b320770e1_51288608',
   'variables' => 
   array (
     'usuario' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55543b320770e1_51288608',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55543b320770e1_51288608')) {function content_55543b320770e1_51288608($_smarty_tpl) {?><?php echo '<script'; ?>
- type="text/javascript" src="js/registro.js"><?php echo '</script'; ?>
->
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<?php if ($_valid && !is_callable('content_55543b320770e1_51288608')) {function content_55543b320770e1_51288608($_smarty_tpl) {?><nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
@@ -39,7 +36,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="elmenu">
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden">
                       <a href="#page-top"></a>
@@ -66,10 +63,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     </li>
                     <?php } else { ?>
                     <li>                    
-                      <a class="page-scroll" data-toggle="modal" href="#" data-target="#myModal">Ingresar</a>
+                      <a class="" data-toggle="modal" href="#" data-target="#myModal">Ingresar</a>
                     </li>
                     <li>                    
-                      <a class="page-scroll" data-toggle="modal" href="#" data-target="#registro">Registrarse</a>
+                      <a class="" data-toggle="modal" href="#" data-target="#registro">Registrarse</a>
                     </li>
                     <?php }?>
                 </ul>

@@ -1,6 +1,6 @@
 <?php
 require_once "clases/clase_base.php";
-require_once "clases/pronostico.php";
+require_once "clases/pronostico_usr.php";
 
 class Usuario extends ClaseBase{	
 
@@ -226,7 +226,8 @@ class Usuario extends ClaseBase{
             return false;
         }
     }
-
+    //devuelve estadisticas del usuario instanciado, se puede requerir:
+    //pronosticos, aciertos, aciertos exactos o puntos generados.
     public function estadisticas($requiere='pronosticos'){
         $pron=$this->pronosticos();
         $pronosticos=count($pron);
@@ -260,5 +261,21 @@ class Usuario extends ClaseBase{
                 return "No definido";
                 break;
         }
+    }
+
+    public function getUsrXshaMail($shamail){
+        $res=$this->db->prepare("SELECT * FROM USUARIOS");
+        $res->execute();
+        $res->bind_result($id, $nombre, $apellido, $mail, $password, $id_f, $id_t, $id_g, $avatar);
+        while($res->fetch()){
+            if($shamail==sha1($mail)){
+                $this->id=$id;
+                $this->nombre=$nombre;
+                $this->apellido=$apellido;
+                $this->mail=$mail;
+                return true;
+            }
+        }
+        return false;
     }
 }

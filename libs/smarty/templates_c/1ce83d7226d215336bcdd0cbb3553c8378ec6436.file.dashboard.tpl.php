@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 08:05:57
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-19 00:40:40
          compiled from "vistas\dashboard.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:289855543b458ad140-15910821%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1ce83d7226d215336bcdd0cbb3553c8378ec6436' => 
     array (
       0 => 'vistas\\dashboard.tpl',
-      1 => 1431479103,
+      1 => 1431988534,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_55543b4591a751_66076781',
   'variables' => 
   array (
     'proyecto' => 0,
@@ -23,8 +25,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'vista' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55543b4591a751_66076781',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_55543b4591a751_66076781')) {function content_55543b4591a751_66076781($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -57,6 +57,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <?php echo '<script'; ?>
  src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"><?php echo '</script'; ?>
 >
+    
     <?php echo '<script'; ?>
  src="js/cosas.js"><?php echo '</script'; ?>
 >
@@ -119,13 +120,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="#"><i class="fa fa-fw fa-dashboard"></i> Grupos</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Grupo 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Grupo 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Grupo 3</a>
                             </li>
                         </ul>
                     </li>

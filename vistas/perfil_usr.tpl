@@ -1,12 +1,4 @@
-<div class="row"><!--mensaje-->
-	<div class="col-lg-12">
-		<div class="alert alert-info alert-dismissabe hide" id="msje">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-			<i class="fa fa-info-circle"></i>
-			Datos modificados Correctamente.
-		</div>
-	</div>
-</div>
+
 <div class="row"><!--Datos de Usuario-->
 	<div class="col-lg-8">
 		<div class="panel panel-default">
@@ -17,7 +9,7 @@
 			<div class="panel-body">
 				<ul class="list-group" id="datos">
 					<li class="list-group-item">
-						<strong>Nombre: </strong><area></area><area>{$usuario->getName()}</area>
+						<strong>Nombre: </strong><area>{$usuario->getName()}</area>
 						<a class="badge hide">
 							<i class="fa fa-pencil"></i>
 							 Editar

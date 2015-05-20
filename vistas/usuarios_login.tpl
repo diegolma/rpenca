@@ -1,3 +1,5 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="js/iniciar.js"></script>
 <div id="myModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -39,16 +41,17 @@
                                     </div>
                                 </div>
                                 <div> 
-                                    <form action="" autocomplete="off" method="POST">
-                                        <div class="input-group mar">
+                                    <form action="" autocomplete="off" method="POST" id="elform">
+                                        <div class="alert alert-danger hide" id="error"></div>
+                                        <div class="input-group mar col-sm-12">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                             <input type="email" class="form-control" name="user" placeholder="Email">
                                         </div>                                                              
-                                        <div class="input-group mar">
+                                        <div class="input-group mar col-lg-12">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                                             <input type="password" class="form-control" name="password" placeholder="Contrase&ntilde;a">
                                         </div>
-                                        <button class="btn btn-sm mar bot sociales btn-block" type="submit">INGRESAR</button>
+                                        <button class="btn btn-sm mar bot sociales btn-block">INGRESAR</button>
                                     </form>                                 
                                 </div>
                                 <div class="">
@@ -59,7 +62,7 @@
                                     </div>-->
                                     <div>
                                         <p>
-                                            <a href="#" class="olv">&iquest;Olvidaste tu contrase&ntilde;a?</a>
+                                            <a href="restaurar.php" class="olv">&iquest;Olvidaste tu contrase&ntilde;a?</a>
                                         </p>
                                     </div>
                                 </div>              

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 17:59:44
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-19 04:03:51
          compiled from "vistas\perfil_usr.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3229155543b459550e5-39532637%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '36ae070b61fc50f7d14eab858bfec7d1fcf753b8' => 
     array (
       0 => 'vistas\\perfil_usr.tpl',
-      1 => 1431619179,
+      1 => 1431991822,
       2 => 'file',
     ),
   ),
@@ -24,15 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55543b45ab4a34_56685958')) {function content_55543b45ab4a34_56685958($_smarty_tpl) {?><div class="row"><!--mensaje-->
-	<div class="col-lg-12">
-		<div class="alert alert-info alert-dismissabe hide" id="msje">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-			<i class="fa fa-info-circle"></i>
-			Datos modificados Correctamente.
-		</div>
-	</div>
-</div>
+<?php if ($_valid && !is_callable('content_55543b45ab4a34_56685958')) {function content_55543b45ab4a34_56685958($_smarty_tpl) {?>
 <div class="row"><!--Datos de Usuario-->
 	<div class="col-lg-8">
 		<div class="panel panel-default">
@@ -43,7 +35,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div class="panel-body">
 				<ul class="list-group" id="datos">
 					<li class="list-group-item">
-						<strong>Nombre: </strong><area></area><area><?php echo $_smarty_tpl->tpl_vars['usuario']->value->getName();?>
+						<strong>Nombre: </strong><area><?php echo $_smarty_tpl->tpl_vars['usuario']->value->getName();?>
 </area>
 						<a class="badge hide">
 							<i class="fa fa-pencil"></i>

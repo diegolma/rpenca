@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 08:05:38
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-21 00:39:52
          compiled from "vistas\usuarios_login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2757255543b320bd5f3-59006208%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c67c70d545bfaa84f298ed137fc70270b46e0b01' => 
     array (
       0 => 'vistas\\usuarios_login.tpl',
-      1 => 1431127438,
+      1 => 1432161560,
       2 => 'file',
     ),
   ),
@@ -15,21 +15,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_55543b320d8b83_10632159',
   'variables' => 
   array (
     'urlFB' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55543b320d8b83_10632159',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55543b320d8b83_10632159')) {function content_55543b320d8b83_10632159($_smarty_tpl) {?><div id="myModal" class="modal fade">
+<?php if ($_valid && !is_callable('content_55543b320d8b83_10632159')) {function content_55543b320d8b83_10632159($_smarty_tpl) {?><?php echo '<script'; ?>
+ src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="js/iniciar.js"><?php echo '</script'; ?>
+>
+<div id="myModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>   
                     <div class="panel-heading">
-                        <h4 style="color:black">Iniciar Sesi&oacute;n o <a href="#">Reg&iacute;strate</a></h4>                        
+                        <h4 style="color:black">Iniciar Sesi&oacute;n o <a class="page-scroll" data-toggle="modal" href="#" data-target="#registro">Reg&iacute;strate</a></h4>                        
                     </div>
                 </div>
                 <div class="modal-body">        
@@ -65,16 +71,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                     </div>
                                 </div>
                                 <div> 
-                                    <form action="" autocomplete="off" method="POST">
-                                        <div class="input-group mar">
+                                    <form action="" autocomplete="off" method="POST" id="elform">
+                                        <div class="alert alert-danger hide" id="error"></div>
+                                        <div class="input-group mar col-sm-12">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                             <input type="email" class="form-control" name="user" placeholder="Email">
                                         </div>                                                              
-                                        <div class="input-group mar">
+                                        <div class="input-group mar col-lg-12">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                                             <input type="password" class="form-control" name="password" placeholder="Contrase&ntilde;a">
                                         </div>
-                                        <button class="btn btn-sm mar bot sociales btn-block" type="submit">INGRESAR</button>
+                                        <button class="btn btn-sm mar bot sociales btn-block">INGRESAR</button>
                                     </form>                                 
                                 </div>
                                 <div class="">
@@ -85,7 +92,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                     </div>-->
                                     <div>
                                         <p>
-                                            <a href="#" class="olv">&iquest;Olvidaste tu contrase&ntilde;a?</a>
+                                            <a href="restaurar.php" class="olv">&iquest;Olvidaste tu contrase&ntilde;a?</a>
                                         </p>
                                     </div>
                                 </div>              

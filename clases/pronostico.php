@@ -1,107 +1,67 @@
 <?php
+	
+	require_once "clases/clase_base.php";
 	/**
 	* 
 	*/
-	class pronostico extends ClaseBase{
-		
-		private $fechaPartido;
-		private $seleccionA;
-		private $seleccionB;
-		private $golesA;
-		private $golesB;
-		private $prediccionA;
-		private $prediccionB;
+	class pronostico extends claseBase
+	{
+		private $id_seleccion, $id_partido, $id_usuario, $goles;
 
 
-		public function __construct($obj=NULL) {        
-	        if(isset($obj)){
+		function __construct($obj=NULL){
+			if(isset($obj)){
 	            foreach ($obj as $key => $value) {
 	                $this->$key=$value;
 	            }    
 	        }
-	        $tabla="pronosticos";
+	        $tabla="pronostica";
 	        parent::__construct($tabla);
-	    }
+		}
 
-	    public function getFecha(){
-	    	return $this->fechaPartido;
-	    }
+		public function getIdSeleccion(){
+			return $this->id_seleccion;
+		}
+		public function getIdUsuario(){
+			return $this->id_usuario;
+		}
+		public function getIdPartido(){
+			return $this->id_partido;
+		}
+		public function getGoles(){
+			return $this->goles;
+		}
 
-	    public function selA(){
-	    	return $this->seleccionA;
-	    }
+		public function setIdSeleccion($a){
+			$this->id_seleccion=$a;
+		}
+		public function setIdUsuario($a){
+			$this->id_usuario=$a;
+		}
+		public function setIdPartido($a){
+			$this->id_partido=$a;
+		}
+		public function setGoles($a){
+			$this->goles=$a;
+		}
 
-	    public function selB(){
-	    	return $this->seleccionB;
-	    }
-
-	    public function golesA(){
-	    	return $this->golesA;
-	    }
-
-	    public function golesB(){
-	    	return $this->golesB;
-	    }
-
-	    public function pronA(){
-	    	return $this->prediccionA;
-	    }
-
-	    public function pronB(){
-	    	return $this->prediccionB;
-	    }
-
-   		public function setFecha($a){
-	    	$this->fechaPartido=$a;
-	    }
-
-	    public function setSelA($a){
-	    	$this->seleccionA=$a;
-	    }
-
-	    public function setSelB($a){
-	    	$this->seleccionB=$a;
-	    }
-
-	    public function setGolesA($a){
-	    	$this->golesA=$a;
-	    }
-
-	    public function setGolesB($a){
-	    	$this->golesB=$a;
-	    }
-
-	    public function setPronA($a){
-	    	$this->prediccionA=$a;
-	    }
-
-	    public function setPronB($a){
-	    	$this->prediccionB=$a;
-	    }
-
-	    public function puntos(){
-	    	$pA=$this->prediccionA;
-	    	$pB=$this->prediccionB;
-	    	$gA=$this->golesA;
-	    	$gB=$this->golesB;
-	    	$puntos=0;
-	    	if($pA>$pB){#dijo que ganaba A
-	    		if($gA>$gB){
-	    			$puntos+=3;
-	    		}
-	    	}elseif($pA==$pB){#empate
-	    		if($gA==$gB){
-	    			$puntos+=3;
-	    		}
-	    	}else{#dijo que pierde A
-	    		if($gA<$gB){
-	    			$puntos+=3;
-	    		}
-	    	}
-	    	if($gA==$pA && $gB==$pB){
-	    		$puntos*=2;
-	    	}
-	    	return $puntos;
-	    }
+		public function getPronosticos($params=array()){
+			$sql="SELECT * FROM PRONOSTICA WHERE";
+			foreach ($params as $key => $value) {
+				$sql.=" ".$key." = ".$value." AND";
+			}
+			$aux=explode(" ", $sql);
+			if(end($aux)=='WHERE' || end($aux)=='AND'){
+				array_pop($aux);	
+			}
+			$sql=implode(" ", $aux);
+			$ret=$this->db->query($sql) or die ("Fallo en la consulta");
+			$res= array();
+        	while ( $fila = $ret->fetch_object()){            
+	            $objeto= new Pronostico($fila);
+	            $res[]=$objeto;
+	        }
+			return $res;
+		}
 	}
 ?>

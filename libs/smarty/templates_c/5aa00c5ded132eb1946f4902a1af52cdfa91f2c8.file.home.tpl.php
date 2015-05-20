@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-14 08:05:37
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-19 00:40:17
          compiled from "vistas\home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1043855543b31e78f96-19013331%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5aa00c5ded132eb1946f4902a1af52cdfa91f2c8' => 
     array (
       0 => 'vistas\\home.tpl',
-      1 => 1430962368,
+      1 => 1431988534,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_55543b31f09849_21552855',
   'variables' => 
   array (
     'proyecto' => 0,
     'mensaje' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.21-dev',
-  'unifunc' => 'content_55543b31f09849_21552855',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_55543b31f09849_21552855')) {function content_55543b31f09849_21552855($_smarty_tpl) {?>
 <!DOCTYPE html>
@@ -160,7 +160,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <div class="form-group">                      
                       <div class="col-md-5 btnconta">
                         <a><i class="fa fa-paper-plane fa-2x"></i></a>
-                        <button id="enviar" name="enviar" class="btn btn-primary">Enviar</button>
+                        <button id="enviar" name="enviar" class="btn btn-sm mar bot sociales">Enviar</button>
                       </div>
                     </div>
 
