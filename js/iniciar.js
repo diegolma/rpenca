@@ -10,7 +10,7 @@ $(function(){
 					$('#error').html(response);
 					$('#error').removeClass('hide');
 				}else{
-					$('#elform').submit();
+					window.location.href="dashboard.php";
 				}
 			}
 		});

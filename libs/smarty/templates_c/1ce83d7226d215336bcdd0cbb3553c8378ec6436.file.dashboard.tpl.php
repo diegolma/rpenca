@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-19 00:40:40
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-22 05:28:00
          compiled from "vistas\dashboard.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:289855543b458ad140-15910821%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1ce83d7226d215336bcdd0cbb3553c8378ec6436' => 
     array (
       0 => 'vistas\\dashboard.tpl',
-      1 => 1431988534,
+      1 => 1432265276,
       2 => 'file',
     ),
   ),
@@ -19,10 +19,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_55543b4591a751_66076781',
   'variables' => 
   array (
-    'proyecto' => 0,
-    'usuario' => 0,
-    'titulo' => 0,
     'vista' => 0,
+    'usuario' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -37,14 +35,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php echo $_smarty_tpl->tpl_vars['proyecto']->value;?>
-</title>
+    <title>La Penca - Dashboard</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <?php if ($_smarty_tpl->tpl_vars['vista']->value=='info_grupo.tpl') {?>
+    <link rel="stylesheet" type="text/css" href="css/timeline.css">
+    <?php }?>
+    <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap.css">
 
     <!-- Morris Charts CSS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -104,14 +105,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
  <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="http://localhost/penca/trunk/dashboard.php?v=perfil_usr"><i class="fa fa-fw fa-user"></i> Perfil</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#" onclick="window.location='index.php?cerrar=1'"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="#" onclick="window.location='index.php?cerrar=1'"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesi&oacute;n</a>
                         </li>
                     </ul>
                 </li>
@@ -119,20 +117,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="#"><i class="fa fa-fw fa-dashboard"></i> Grupos</a>
+                    <li>
+                        <a href="http://localhost/penca/trunk/dashboard.php?v=perfil_usr"><i class="fa fa-fw fa-user"></i> Mi Perfil </a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-users"></i> Grupos <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Grupo 1</a>
+                                <a href="http://localhost/penca/trunk/dashboard.php?v=info_grupo&group=1">Grupo 1</a>
                             </li>
                             <li>
-                                <a href="#">Grupo 2</a>
+                                <a href="http://localhost/penca/trunk/dashboard.php?v=info_grupo&group=2">Grupo 2</a>
                             </li>
                             <li>
-                                <a href="#">Grupo 3</a>
+                                <a href="http://localhost/penca/trunk/dashboard.php?v=info_grupo&group=3">Grupo 3</a>
                             </li>
                         </ul>
                     </li>
@@ -142,16 +140,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         </nav>
 
         <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header"><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
-</h1>
-                </div>
-            </div>
             <?php echo $_smarty_tpl->getSubTemplate ($_smarty_tpl->tpl_vars['vista']->value, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
             <!-- /.container-fluid -->
-
         </div>
         <!-- /#page-wrapper -->
 
@@ -167,7 +158,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <?php echo '<script'; ?>
  src="js/bootstrap.min.js"><?php echo '</script'; ?>
 >
-
+    <?php if ($_smarty_tpl->tpl_vars['vista']->value=='perfil_usr') {?>
     <!-- Morris Charts JavaScript -->
     <?php echo '<script'; ?>
  src="js/plugins/morris/raphael.min.js"><?php echo '</script'; ?>
@@ -177,6 +168,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 >
     <?php echo '<script'; ?>
  src="js/plugins/morris/morris-data.js"><?php echo '</script'; ?>
+>
+    <?php }?>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="libs/DataTables/media/js/jquery.dataTables.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/dataTables.bootstrap.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="js/grayscale.js"><?php echo '</script'; ?>
 >
 
 </body>

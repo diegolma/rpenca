@@ -278,4 +278,27 @@ class Usuario extends ClaseBase{
         }
         return false;
     }
+    
+    public function ranking(){
+        $todos=$this->getListado();
+        foreach ($todos as $key => $value) {
+            $email = $value->getEmail();
+            $default = "mm";
+            $size = 50;
+            $grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+            $value->setAvatar($grav_url);
+        }
+        function cmp($a, $b){
+            if(get_class($a)==get_class($b) && get_class($a)=='Usuario'){
+                $pa=$a->estadisticas('puntos');
+                $pb=$b->estadisticas('puntos');
+                return $pa-$pb; 
+            }
+            return 0;
+        }
+        usort($todos, "cmp");
+        return $todos;
+    }
+
+    
 }

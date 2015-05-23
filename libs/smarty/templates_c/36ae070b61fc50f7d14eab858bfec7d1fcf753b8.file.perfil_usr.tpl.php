@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-19 04:03:51
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-21 03:13:59
          compiled from "vistas\perfil_usr.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3229155543b459550e5-39532637%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '36ae070b61fc50f7d14eab858bfec7d1fcf753b8' => 
     array (
       0 => 'vistas\\perfil_usr.tpl',
-      1 => 1431991822,
+      1 => 1432169466,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_55543b45ab4a34_56685958')) {function content_55543b45ab4a34_56685958($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_55543b45ab4a34_56685958')) {function content_55543b45ab4a34_56685958($_smarty_tpl) {?><div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Perfil de Usuario</h1>
+    </div>
+</div>
 <div class="row"><!--Datos de Usuario-->
 	<div class="col-lg-8">
 		<div class="panel panel-default">

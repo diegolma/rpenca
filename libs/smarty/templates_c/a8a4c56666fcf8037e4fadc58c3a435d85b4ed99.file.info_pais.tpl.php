@@ -1,9 +1,50 @@
-            <div class="container-fluid">
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-23 02:19:54
+         compiled from "vistas\info_pais.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:4313555fc735846888-56578883%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'a8a4c56666fcf8037e4fadc58c3a435d85b4ed99' => 
+    array (
+      0 => 'vistas\\info_pais.tpl',
+      1 => 1432340334,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '4313555fc735846888-56578883',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.21-dev',
+  'unifunc' => 'content_555fc735af9fb1_93558471',
+  'variables' => 
+  array (
+    'pais' => 0,
+    'escudo' => 0,
+    'participaciones' => 0,
+    'copas' => 0,
+    'jugados' => 0,
+    'victorias' => 0,
+    'jugadores' => 0,
+    'jugador' => 0,
+    'presidente' => 0,
+    'dt' => 0,
+    'nombre' => 0,
+    'web' => 0,
+    'twitter' => 0,
+    'direccion' => 0,
+    'nombreCorto' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_555fc735af9fb1_93558471')) {function content_555fc735af9fb1_93558471($_smarty_tpl) {?>            <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            {$pais} <img src="{$escudo}" alt="No tiene escudo">
+                            <?php echo $_smarty_tpl->tpl_vars['pais']->value;?>
+ <img src="<?php echo $_smarty_tpl->tpl_vars['escudo']->value;?>
+" alt="No tiene escudo">
                         </h1>                        
                     </div>
                 </div>
@@ -16,7 +57,8 @@
                                         <i class="fa fa-info-circle fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">{$participaciones}</div>
+                                        <div class="huge"><?php echo $_smarty_tpl->tpl_vars['participaciones']->value;?>
+</div>
                                         <div>Participaciones</div>
                                     </div>
                                 </div>
@@ -31,7 +73,8 @@
                                         <i class="fa fa-trophy fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">{$copas}</div>
+                                        <div class="huge"><?php echo $_smarty_tpl->tpl_vars['copas']->value;?>
+</div>
                                         <div>Copas</div>
                                     </div>
                                 </div>
@@ -46,7 +89,8 @@
                                         <i class="fa fa-futbol-o fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">{$jugados}</div>
+                                        <div class="huge"><?php echo $_smarty_tpl->tpl_vars['jugados']->value;?>
+</div>
                                         <div>Partidos</div>
                                     </div>
                                 </div>
@@ -61,7 +105,8 @@
                                         <i class="fa fa-child fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">{$victorias}</div>
+                                        <div class="huge"><?php echo $_smarty_tpl->tpl_vars['victorias']->value;?>
+</div>
                                         <div>Victorias</div>
                                     </div>
                                 </div>
@@ -86,16 +131,26 @@
 									</tr>
 								</thead>
 								<tbody>
-									{foreach from=$jugadores item=jugador}
+									<?php  $_smarty_tpl->tpl_vars['jugador'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['jugador']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['jugadores']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['jugador']->key => $_smarty_tpl->tpl_vars['jugador']->value) {
+$_smarty_tpl->tpl_vars['jugador']->_loop = true;
+?>
                   					<tr>
-                    					<td>{$jugador->getNick()}</td>
-                    					<td>{$jugador->getPos()}</td>                                        
-                    					<td>{$jugador->getGol()}</td>                                        
-                    					<td>{$jugador->getAma()}</td>                                        
-                    					<td>{$jugador->getRoj()}</td>                                        
-                    					<td><img src="{$jugador->getFoto()}" alt="Sin foto"></img></td>                                        
+                    					<td><?php echo $_smarty_tpl->tpl_vars['jugador']->value->getNick();?>
+</td>
+                    					<td><?php echo $_smarty_tpl->tpl_vars['jugador']->value->getPos();?>
+</td>                                        
+                    					<td><?php echo $_smarty_tpl->tpl_vars['jugador']->value->getGol();?>
+</td>                                        
+                    					<td><?php echo $_smarty_tpl->tpl_vars['jugador']->value->getAma();?>
+</td>                                        
+                    					<td><?php echo $_smarty_tpl->tpl_vars['jugador']->value->getRoj();?>
+</td>                                        
+                    					<td><img src="<?php echo $_smarty_tpl->tpl_vars['jugador']->value->getFoto();?>
+" alt="Sin foto"></img></td>                                        
               						</tr>
-                					{/foreach}								
+                					<?php } ?>								
 								</tbody>
 							</table>
 						</div>
@@ -110,31 +165,40 @@
 								<tbody>
 									<tr>
 										<th>Presidente</th>
-										<td>{$presidente}</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['presidente']->value;?>
+</td>
 									</tr>
 									<tr>
 										<th>Director T&eacute;cnico</th>
-										<td>{$dt}</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['dt']->value;?>
+</td>
 									</tr>		
 									<tr>
 										<th>Nombre Completo</th>
-										<td>{$nombre}</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['nombre']->value;?>
+</td>
 									</tr>	
 									<tr>
 										<th>P&aacute;gina Web</th>
-										<td><a href="{$web}" target="_blank">{$web}</a></td>
+										<td><a href="<?php echo $_smarty_tpl->tpl_vars['web']->value;?>
+" target="_blank"><?php echo $_smarty_tpl->tpl_vars['web']->value;?>
+</a></td>
 									</tr>	
 									<tr>
 										<th>Twitter oficial</th>
-										<td><a href="http://www.twitter.com/{$twitter}" target="_blank">{$twitter}</a></td>
+										<td><a href="http://www.twitter.com/<?php echo $_smarty_tpl->tpl_vars['twitter']->value;?>
+" target="_blank"><?php echo $_smarty_tpl->tpl_vars['twitter']->value;?>
+</a></td>
 									</tr>	
 									<tr>
 										<th>Direcci&oacute;n</th>
-										<td>{$direccion}</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['direccion']->value;?>
+</td>
 									</tr>	
 									<tr>
 										<th>Referencia</th>
-										<td>{$nombreCorto}</td>
+										<td><?php echo $_smarty_tpl->tpl_vars['nombreCorto']->value;?>
+</td>
 									</tr>	
 								</tbody>
 							</table>
@@ -142,4 +206,4 @@
                 <!-- /.row -->
 
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.container-fluid --><?php }} ?>

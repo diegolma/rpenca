@@ -41,10 +41,8 @@ function infoPais($arrayMulti){
     $pedido = BODY_API.KEY_API."&req=team_players&team=".$idCopa."&year=2015";
     $array = array();
     $array = plantilla(pedir($pedido));
-    $tpl= new Template();
     $datos = array('pais' => $pais, 'nombreCorto' => $nombreCorto, 'dt' => $dt, 'web' => $web, 'direccion' => $direccion, 'presidente' => $presidente, 'nombre' => $nombre, 'twitter' => $twitter, 'escudo' => $escudo, 'jugadores' => $array, 'participaciones' => $participaciones, 'copas' => $copas, 'jugados' => $jugados, 'victorias' => $victorias);
-    $tpl->asignar('proyecto',"Penca");
-    $tpl->mostrar('info_pais',$datos);    
+    return $datos;
 }
 
 function infoGrupo($arrayMulti){ 
@@ -60,7 +58,7 @@ function infoGrupo($arrayMulti){
 		$empates = $value["draws"];
 		$derrotas = $value["losses"];
 		$jugados = $victorias + $empates + $derrotas;
-		$position = $value["pos"];	//posicion en la tabla
+		$position = $value["pos"]-1;	//posicion en la tabla
 		$escudo = $value["shield"];
 	
 		$seleccion = new seleccion();
@@ -72,22 +70,8 @@ function infoGrupo($arrayMulti){
         $seleccion->setDerrotas($derrotas);
         $seleccion->setJugados($jugados);
 		$seleccion->setPos($position);
-		$seleccion->setEscudo($escudo);
-        switch ($position) {
-            case '1':
-                $index = 0;
-                break;
-            case '2':
-                $index = 1;
-                break;
-            case '3':
-                $index = 2;
-                break;
-            case '4':
-                $index = 3;
-                break;            
-        }                 
-        $ret[$index] = $seleccion;
+		$seleccion->setEscudo($escudo);              
+        $ret[$position] = $seleccion;
     }
     ksort($ret);    
     $jornadas = array();
@@ -100,9 +84,12 @@ function infoGrupo($arrayMulti){
     $pedido = BODY_API.KEY_API."&req=matchs&league=177&group=".$grupo."&round=3";    
     $jornadasC = jornada(pedir($pedido));    //esta es la jornada actual de ese grupo
 
-    $tpl = new Template();
-    $datos = array('selecciones' => $ret, 'num' => $grupo, 'jornadas' => $jornadas, 'jornadasB' => $jornadasB, 'jornadasC' => $jornadasC);
-    $tpl->mostrar('info_grupo',$datos);
+    $datos = array('selecciones' => $ret, 
+                    'num' => $grupo, 
+                    'jornadas' => $jornadas, 
+                    'jornadasB' => $jornadasB, 
+                    'jornadasC' => $jornadasC);
+    return $datos;
 }
 
 function plantilla($arrayMulti){
@@ -223,5 +210,13 @@ function historico($arrayMulti){
     $tpl->mostrar('timeline',$datos);*/
 }
 
+function partidosDeHoy(){
+    $pedido= BODY_API.KEY_API.'&req=matchsdaycompetitions=177_all&date=2015-6-12';
+    $ped=pedir($pedido);
+    $ret=array();
+    foreach ($ped['matches'] as $key => $value) {
+        
+    }
+}
 
 ?>

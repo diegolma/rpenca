@@ -2,6 +2,7 @@
 	
 	require_once "clases/clase_base.php";
 	require_once "clases/pronostico.php";
+	require_once "clases/seleccion.php";
 
 	class Partido extends ClaseBase{
 
@@ -27,16 +28,28 @@
 
 
 		//Devuelve un array con los id's de las selecciones participantes en el partido
-		public function participantes(){
+		public function participantes($p=0){
 			$ret=$this->db->prepare("SELECT id_s FROM entre WHERE id_p=?");
 			$ret->bind_param("i", $this->id);
 			$ret->execute();
 			$ret->bind_result($id);
 			$res=array();
 			while($ret->fetch()){
-				$res[]=$id;
+				$sel=new Seleccion();
+				$sel=$sel->obtenerPorid($id);
+				$res[]=$sel;
 			}
-			return $res;
+			switch ($p) {
+				case 1:
+				case 2:
+					return $res[$p-1];
+					break;
+				
+				default:
+					return $res;
+					break;
+			}
+			
 		}
 
 		//Retorna un Listado de todas los pronosticos del partido instanciado

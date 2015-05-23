@@ -73,12 +73,7 @@ use Facebook\FacebookRequestException;
 		$tpl= new Template();
 		$mensaje="";
 		$loginUrl="#";
-		if(isset($_GET["pais"])){			
-			$pedido = BODY_API.KEY_API.'&req=team&id='.$_GET["pais"];
-			infoPais(pedir($pedido));
-			exit;
-		}
-		elseif(isset($_GET["cerrar"])){//Cierro Sesion
+		if(isset($_GET["cerrar"])){//Cierro Sesion
 			$usr=new Usuario();
 			$usr->logout();
 		}
@@ -208,34 +203,6 @@ use Facebook\FacebookRequestException;
 
 			$loginUrl = $helper->getLoginUrl($permissions);
 		    echo '<a href="' . $loginUrl . '">Login</a>';
-		}
-	}
-
-	function dashboard($vista="", $titulo=""){
-		if(Auth::logueado()){
-			$tpl=new Template();
-			$mensaje="";
-			$vista="perfil_usr.tpl";
-			$titulo="Perfil de Usuario";
-			$usr=new Usuario();
-			$usr=$usr->obtenerPorId(Session::get('id'));
-			
-			$email = $usr->getEmail();
-			$default = "mm";
-			$size = 225;
-			$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
-
-			$usr->setAvatar($grav_url);
-			
-			$datos=array('usuario' => $usr,
-						 'mensaje' => $mensaje,
-						 'proyecto' => "Penca - Dashboard",
-						 'titulo' =>$titulo,
-						 'vista' => $vista);
-			$tpl->mostrar('dashboard',$datos);
-		}else{
-			header("location:index.php");
-			exit;
 		}
 	}
 

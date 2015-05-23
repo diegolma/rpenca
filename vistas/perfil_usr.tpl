@@ -1,4 +1,8 @@
-
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Perfil de Usuario</h1>
+    </div>
+</div>
 <div class="row"><!--Datos de Usuario-->
 	<div class="col-lg-8">
 		<div class="panel panel-default">

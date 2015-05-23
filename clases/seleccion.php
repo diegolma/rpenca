@@ -23,7 +23,7 @@ class seleccion extends ClaseBase
 				$this->$key=$value;
 			}
 		}
-		 $tabla="seleccion";
+		 $tabla="selecciones";
        	 parent::__construct($tabla);		
 	}
 
@@ -124,8 +124,9 @@ class seleccion extends ClaseBase
 
     public function getIdCopa($idGeneral){        
         $res=0;
-        $sql="select id_copa from selecciones where id_general=".$idGeneral;                        
-        $stmt = $this->getDB()->prepare($sql);        
+        $sql="SELECT id_copa FROM selecciones WHERE id_general=?";                        
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $idGeneral);        
         $stmt->execute();
         $resultado = $stmt->get_result();
         $res = $resultado->fetch_object();        
