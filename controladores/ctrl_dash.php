@@ -35,7 +35,8 @@
 					$datos=infoGrupo(pedir($pedido));
 					break;
 				case 'principal':
-					
+					$pdh=partidosDeHoy();
+					$datos['pDeHoy']=$pdh;
 					break;
 				case 'info_pais':
 					if(isset($_GET['pais'])){
@@ -45,6 +46,9 @@
 					else{
 						$vista='404';
 					}
+					break;
+				case 'partidos':
+					$datos['part']=(new Partido());
 					break;
 				default:
 					$vista="404";

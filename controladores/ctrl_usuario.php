@@ -1,11 +1,12 @@
 <?php
-require "clases/usuario.php";
-require "clases/template.php";
+require_once "clases/usuario.php";
+require_once "clases/template.php";
 require_once "clases/Utils.php";
 require_once "clases/auth.php";
-require_once "ctrl_api.php";
-require "vendor/autoload.php";
-require "libs/facebook-php-sdk-v4-4.0-dev/autoload.php";//pal facebook
+require_once "clases/session.php";
+require_once "controladores/ctrl_api.php";
+require_once "vendor/autoload.php";
+require_once "libs/facebook-php-sdk-v4-4.0-dev/autoload.php";//pal facebook
 
 use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
@@ -267,8 +268,7 @@ use Facebook\FacebookRequestException;
 			$dte=$_GET['dte'];
 			$shamail=$_GET['usr'];
 			if(sha1($dt)==$dte){//confirmacion de que no se haya alterado la uri.
-				$date=new DateTime();
-				$date=$date->getTimestamp();//pasa una fecha/hora comun a unix
+				$date=time();//fecha unix actual
 				if($date-$dt<=7200){//7200 son los segundos en 2hs 
 					//se procede con el reseteo.
 					$usr=new Usuario();
@@ -321,5 +321,25 @@ use Facebook\FacebookRequestException;
 			'urlFB' => $loginUrl
 		);
 		$tpl->mostrar($vista,$datos);
+	}
+
+	function apostar(){
+		if(isset($_POST['partido']) && isset($_POST['sel1']) && isset($_POST['sel2']) && isset($_POST['pred1']) && isset($_POST['pred2'])){
+			if(Auth::logueado()){
+				$p=new Pronostico();
+				$p->setIdPartido($_POST['partido']);
+				$p->setIdSeleccion($_POST['sel1']);
+				$p->setGoles($_POST['pred1']);
+				$p2=new Pronostico();
+				$p2->setIdPartido($_POST['partido']);
+				$p2->setIdSeleccion($_POST['sel2']);
+				$p2->setGoles($_POST['pred2']);
+				$param = array($p, $p2);
+				$usr = new Usuario();
+				$id=Session::get('id');
+				$usr=$usr->obtenerPorId($id);
+				$usr->pronosticar($param);
+			}
+		}
 	}
 ?>

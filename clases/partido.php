@@ -6,7 +6,7 @@
 
 	class Partido extends ClaseBase{
 
-		private $id, $fecha;
+		private $id, $fecha, $seleccionA, $seleccionB;
 
 		public function __construct($obj=NULL){
 			if(isset($obj)){
@@ -24,6 +24,30 @@
 
 		public function getId(){
 			return $this->id;
+		}
+
+		public function getSeleccionA(){
+			return $this->seleccionA;
+		}
+
+		public function getSeleccionB(){
+			return $this->seleccionB;
+		}
+
+		public function setSeleccionA($a){
+			$this->seleccionA=$a;
+		}
+
+		public function setSeleccionB($a){
+			$this->seleccionB=$a;
+		}
+
+		public function setId($a){
+			$this->id=$a;
+		}
+
+		public function setFecha($a){
+			$this->fecha=$a;
 		}
 
 
@@ -71,6 +95,54 @@
 				return ($corresponde/$total)*100;
 			else
 				return 0;
+		}
+
+		//Devuelve un listado con todos los partidos finalizados
+		//(tienen un resultado cargado en goles/partido)
+		public function finalizados(){
+			$sql="SELECT DISTINCT id_partido FROM GOLESPARTIDO";
+			$ret=$this->db->prepare($sql);
+			$ret->execute();
+			$ret->bind_result($id);
+			$res=array();
+			while($ret->fetch()){
+				$res[]=$this->obtenerPorid($id);
+			}
+			return $res;
+		}
+		public function goles($sel){
+			$ret=$this->db->prepare('SELECT goles FROM GOLESPARTIDO WHERE id_partido=? AND id_seleccion=?');
+			$ret->bind_param("ii", $this->id, $sel);
+			$ret->execute;
+			$ret->bind_result($g);
+			while($ret->fetch()){
+				return $g;
+			}
+		}
+
+		public function yaPronosticados($usu){
+			$ret=$this->db->prepare("SELECT DISTINCT id_partido FROM PRONOSTICA WHERE id_usuario=?");
+			$ret->bind_param("i", $usu);
+			$ret->execute();
+			$ret->bind_result($id);
+			$res=array();
+			while($ret->fetch()){
+				$res[]=$this->obtenerPorid($id);
+			}
+			return $res;
+		}
+
+		public function sinPronostico($usu){
+			$sql="SELECT id FROM PARTIDOS WHERE id NOT IN (SELECT id_partido FROM PRONOSTICA WHERE id_usuario=?)";
+			$ret=$this->db->prepare($sql);
+			$ret->bind_param("i", $usu);
+			$ret->execute();
+			$ret->bind_result($id);
+			$res=array();
+			while($ret->fetch()){
+				$res[]=$this->obtenerPorid($id);
+			}
+			return $res;
 		}
 	}
 ?>

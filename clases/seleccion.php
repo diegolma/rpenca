@@ -4,7 +4,7 @@ require_once "config/config.php";
 class seleccion extends ClaseBase
 {
 	private $id="";
-	private $nombre="";
+	private $Nombre="";
     private $idGeneral="";
     private $idCopa="";
 	private $escudo="";
@@ -50,7 +50,7 @@ class seleccion extends ClaseBase
     }
 
     public function getName(){
-    	return $this->nombre;
+    	return $this->Nombre;
     }
 
     public function getIdSeleccion(){
@@ -165,12 +165,22 @@ class seleccion extends ClaseBase
 
     public function getPG($idGeneral){
         $res=0;
-        $sql="select PG from selecciones where id_general=".$idGeneral;                        
+        $sql="select PG from selecciones where id_general=?";                        
         $stmt = $this->getDB()->prepare($sql);        
+        $stmt->bind_param("i", $idGeneral);
         $stmt->execute();
         $resultado = $stmt->get_result();
         $res = $resultado->fetch_object();        
         return $res->PG;    
+    }
+
+    public function getSeleccion($idCopa){
+        $res=$this->db->prepare("SELECT * FROM SELECCIONES WHERE id_copa=?");
+        $res->bind_param("i", $idCopa);
+        $res->execute();
+        $ret=$res->get_result();
+        $ret=$ret->fetch_object();
+        return new Seleccion($ret);
     }
 }
 ?>

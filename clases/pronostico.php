@@ -1,13 +1,8 @@
 <?php
-	
 	require_once "clases/clase_base.php";
-	/**
-	* 
-	*/
-	class pronostico extends claseBase
-	{
-		private $id_seleccion, $id_partido, $id_usuario, $goles;
 
+	class pronostico extends claseBase{
+		private $id_seleccion, $id_partido, $id_usuario, $goles;
 
 		function __construct($obj=NULL){
 			if(isset($obj)){
@@ -62,6 +57,16 @@
 	            $res[]=$objeto;
 	        }
 			return $res;
+		}
+
+		public function hecho(){
+			$ret=$this->db->prepare("SELECT * FROM pronostica WHERE id_partido=? AND id_seleccion =? AND id_usuario=?");
+			$ret->bind_param("iii", $this->id_partido, $this->id_seleccion, $this->id_usuario);
+			$ret->execute();
+			while($ret->fetch()){
+				return true;
+			}
+			return false;
 		}
 	}
 ?>

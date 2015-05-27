@@ -58,7 +58,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashboard.php">Penca - Tu Cuenta</a>
+                <a class="navbar-brand" href="index.php">La Penca</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -79,7 +79,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="http://localhost/penca/trunk/dashboard.php?v=perfil_usr"><i class="fa fa-fw fa-user"></i> Mi Perfil </a>
+                        <a href="dashboard.php?"><i class="fa fa-fw fa-dashboard"></i> Principal </a>
+                    </li>
+                    <li>
+                        <a href="dashboard.php?v=perfil_usr"><i class="fa fa-fw fa-user"></i> Mi Perfil </a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-users"></i> Grupos <i class="fa fa-fw fa-caret-down"></i></a>
@@ -94,6 +97,9 @@
                                 <a href="http://localhost/penca/trunk/dashboard.php?v=info_grupo&group=3">Grupo 3</a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="dashboard.php?v=partidos"><i class="fa fa-fw fa-futbol-o"></i> Todos los Partidos </a>
                     </li>
                 </ul>
             </div>

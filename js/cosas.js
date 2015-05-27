@@ -1,5 +1,29 @@
 $(document).ready(function(){
 
+	$('#pdh ul li form').submit(function(){
+		$.ajax({
+			type: 'POST',
+			url: 'apostar.php',
+			data: $(this).serialize(),
+			dataType: 'json',
+			success:function(response){
+				$('#pdh ul').addClass('hide');
+				$('#pdh div.alert span').text(response['mensaje']);
+				$('#pdh div.alert').removeClass('hide');
+				if(response['correcto']===true)
+					$('#pdh div.alert').addClass('alert-success');
+				else
+					$('#pdh div.alert').addClass('alert-danger');
+			}
+		});
+		return false;
+	});
+
+	$('#pdh div.alert button').click(function(){
+		$('#pdh ul').removeClass('hide');
+		$(this).parent().addClass('hide');
+	});
+
 	$('#rank').DataTable({
         pageLength : 10,
         lengthChange : false,

@@ -2,7 +2,7 @@
 	/**
 	* Es un DataType
 	*/
-	class pronostico{
+	class pronostico_usr{
 		
 		private $fechaPartido;
 		private $seleccionA;

@@ -6,9 +6,11 @@
 	            session_start();
 	        }
 	    }
+
 	    public static function set($key, $value){
 	        $_SESSION[$key] = $value;
 	    }
+
 	    public static function get($key){
 	        if (isset($_SESSION[$key])) {
 	            return $_SESSION[$key];
@@ -17,6 +19,7 @@
 	            return "";
 	        }
 	    }
+	    
 	    public static function destroy(){//destruye una sesion
 	        session_destroy();
 	    }

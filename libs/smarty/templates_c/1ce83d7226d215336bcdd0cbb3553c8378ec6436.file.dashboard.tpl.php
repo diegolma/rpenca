@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-22 05:28:00
+<?php /* Smarty version Smarty-3.1.21-dev, created on 2015-05-26 02:45:38
          compiled from "vistas\dashboard.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:289855543b458ad140-15910821%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1ce83d7226d215336bcdd0cbb3553c8378ec6436' => 
     array (
       0 => 'vistas\\dashboard.tpl',
-      1 => 1432265276,
+      1 => 1432601132,
       2 => 'file',
     ),
   ),
@@ -96,7 +96,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashboard.php">Penca - Tu Cuenta</a>
+                <a class="navbar-brand" href="index.php">La Penca</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -118,7 +118,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="http://localhost/penca/trunk/dashboard.php?v=perfil_usr"><i class="fa fa-fw fa-user"></i> Mi Perfil </a>
+                        <a href="dashboard.php?"><i class="fa fa-fw fa-dashboard"></i> Principal </a>
+                    </li>
+                    <li>
+                        <a href="dashboard.php?v=perfil_usr"><i class="fa fa-fw fa-user"></i> Mi Perfil </a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-users"></i> Grupos <i class="fa fa-fw fa-caret-down"></i></a>
@@ -133,6 +136,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 <a href="http://localhost/penca/trunk/dashboard.php?v=info_grupo&group=3">Grupo 3</a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="dashboard.php?v=partidos"><i class="fa fa-fw fa-futbol-o"></i> Todos los Partidos </a>
                     </li>
                 </ul>
             </div>

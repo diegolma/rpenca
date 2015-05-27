@@ -135,8 +135,7 @@ class Utils{
 
 	public static function reseteo($email){
 		$shamail=sha1($email);
-		$hola=new DateTime();
-		$now=$hola->getTimestamp();
+		$now=time();
 
 		$a='http://localhost/penca/trunk/restaurar.php?usr='.$shamail.'&dt='.$now.'&dte='.sha1($now);
 		//Create a new PHPMailer instance

@@ -5,6 +5,8 @@ require_once('clases/seleccion.php');
 require_once('clases/jugador.php');
 require_once('clases/jornada.php');
 require_once('config/config.php');
+require_once 'clases/pronostico.php';
+require_once 'clases/partido.php';
 
 
 function pedir($pedido){
@@ -204,18 +206,45 @@ function historico($arrayMulti){
         $jornada->setGolV($golVisitante);
         $ret[]=$jornada;
     }
-        return $ret;
-    /*$tpl = new template();
-    $datos = array('historicos' => $ret);
-    $tpl->mostrar('timeline',$datos);*/
+    return $ret;
 }
 
 function partidosDeHoy(){
-    $pedido= BODY_API.KEY_API.'&req=matchsdaycompetitions=177_all&date=2015-6-12';
+    date_default_timezone_set("America/Argentina/Buenos_Aires");
+    $fecha=date('Y-m-d');
+    $fecha='2015-06-12';
+    $pedido= BODY_API.KEY_API.'&req=matchsday&competitions=177&date='.$fecha;
+    //$pedido="http://www.resultados-futbol.com/scripts/api/api.php?tz=America/Argentina/Buenos_Aires&format=json&key=6913d6f4a6b31e5c07c1cea90562ced4&req=matchsday&competitions=177_all&date=2015-6-12";
     $ped=pedir($pedido);
     $ret=array();
-    foreach ($ped['matches'] as $key => $value) {
-        
+    $s=new Seleccion();
+    if($ped['matches'])
+        foreach ($ped['matches'] as $key => $value) {
+            $hora = $fecha.' '.$value['hour'].':'.$value['minute'].':00';
+            $hora = strtotime($hora);
+            if($hora-time()>900){#15 minutos
+                $p=new Partido();
+                $p->setId($value['id']);
+                $p->setSeleccionA($s->getSeleccion($value['team1']));
+                $p->setSeleccionB($s->getSeleccion($value['team2']));
+                $ret[]=$p;
+            }
+        }
+    return $ret;
+}
+
+function guardarP(){
+    $pedido="http://www.resultados-futbol.com/scripts/api/api.php?tz=America/Argentina/Buenos_Aires&format=json&key=6913d6f4a6b31e5c07c1cea90562ced4&req=matchs&league=177";
+    $ped=pedir($pedido);
+    $p=new Partido();
+    foreach($ped['match'] as $key => $v){
+        $fecha=$v['date'];
+        $aux=explode("/", $fecha);
+        $fecha=implode("-", $aux);
+        echo $v['id']." ".$fecha."<br>";
+        $ret=$p->getDb()->prepare("INSERT INTO PARTIDOS (id, fecha) VALUES (?, ?)");
+        $ret->bind_param("is", $v['id'], $fecha);
+        $ret->execute();
     }
 }
 

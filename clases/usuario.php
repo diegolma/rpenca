@@ -1,6 +1,7 @@
 <?php
 require_once "clases/clase_base.php";
 require_once "clases/pronostico_usr.php";
+require_once "clases/pronostico.php";
 
 class Usuario extends ClaseBase{	
 
@@ -174,14 +175,19 @@ class Usuario extends ClaseBase{
     public function pronosticos(){
         $resultados = array();
         $sql="SELECT fecha, selA.nombre, eA.goles, eB.goles, selB.nombre, proA.goles, proB.goles
-              FROM ((((((pronostica as proA JOIN pronostica as proB ON proA.id_partido=proB.id_partido AND proA.id_usuario=proB.id_usuario AND proA.id_seleccion>proB.id_seleccion) JOIN selecciones as selA ON selA.id=proA.id_seleccion) JOIN selecciones as selB ON selB.id=proB.id_seleccion) JOIN entre as eA ON eA.id_p=proA.id_partido AND eA.id_s=proA.id_seleccion) JOIN entre as eB ON eB.id_p=proA.id_partido AND eB.id_s=proB.id_seleccion) JOIN partidos as P ON P.id=proA.id_partido)
+              FROM ((((((pronostica as proA JOIN pronostica as proB ON proA.id_partido=proB.id_partido AND proA.id_usuario=proB.id_usuario AND proA.id_seleccion>proB.id_seleccion) 
+                 JOIN selecciones as selA ON selA.id=proA.id_seleccion) 
+                 JOIN selecciones as selB ON selB.id=proB.id_seleccion) 
+                 JOIN golespartido as eA ON eA.id_partido=proA.id_partido AND eA.id_seleccion=proA.id_seleccion) 
+                 JOIN golespartido as eB ON eB.id_partido=proA.id_partido AND eB.id_seleccion=proB.id_seleccion) 
+                 JOIN partidos as P ON P.id=proA.id_partido)
               WHERE proA.id_usuario=?";
         $resultado=$this->db->prepare($sql);
         $resultado->bind_param("i", $this->id);
         $resultado->execute();
         $resultado->bind_result($fecha, $nomA, $golA, $golB, $nomB, $proA, $proB);
         while($resultado->fetch()){
-            $pron=new Pronostico();
+            $pron=new Pronostico_usr();
             $pron->setFecha($fecha);
             $pron->setSelA($nomA);
             $pron->setSelB($nomB);
@@ -300,5 +306,43 @@ class Usuario extends ClaseBase{
         return $todos;
     }
 
-    
+    public function pronosticar($params=array()){ 
+
+        foreach ($params as $key => $pron) {
+            $p=$pron->getIdPartido();
+            $s=$pron->getIdSeleccion();
+            $g=$pron->getGoles();
+            $pron->setIdUsuario($this->id);
+            if($this->haPronosticado($p, $s)===false){
+                $tipo='realizó';
+                $ret=$this->db->prepare("INSERT INTO pronostica (id_partido, id_seleccion, id_usuario, goles) VALUES (?, ?, ?, ?)");
+                $ret->bind_param("iiii", $p, $s, $this->id, $g);
+            }
+            else{
+                $tipo='actualizó';
+                $ret=$this->db->prepare("UPDATE pronostica SET goles = ? WHERE id_partido = ? AND id_seleccion = ? AND id_usuario = ?");
+                $ret->bind_param("iiii", $g, $p, $s, $this->id);
+            }
+            $bandera=$ret->execute();             
+        }
+        $mensaje="Se ".$tipo." correctamente el pronostico.";
+        if(!$bandera) $mensaje="No ".strtolower($mensaje);
+        $ret = array('correcto' => $bandera,
+                     'mensaje' => $mensaje);
+        echo json_encode($ret);
+    }
+
+    #devuelve la cantidad de goeles del pronostico realizado en caso de haberlo 
+    #hecho o false en caso contrario
+    public function haPronosticado($partido, $seleccion){
+        $ret=$this->db->prepare("SELECT goles FROM pronostica WHERE id_partido=? AND id_seleccion=? AND id_usuario=?");
+        $ret->bind_param("iii", $partido, $seleccion, $this->id);
+        $ret->execute();
+        $ret->bind_result($gl);
+        while($ret->fetch()){
+            return $gl;
+        }
+        return false;
+    }
 }
+?>
