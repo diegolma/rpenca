@@ -17,7 +17,9 @@
 	    }
 
 	    public function getFecha(){
-	    	return $this->fechaPartido;
+	    	$aux=explode("-", $this->fechaPartido);
+	    	$aux=array_reverse($aux);
+	    	return implode("/", $aux);
 	    }
 
 	    public function selA(){

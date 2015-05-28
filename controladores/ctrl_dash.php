@@ -36,7 +36,9 @@
 					break;
 				case 'principal':
 					$pdh=partidosDeHoy();
+					$live=livescore();
 					$datos['pDeHoy']=$pdh;
+					$datos['livescore']=$live;
 					break;
 				case 'info_pais':
 					if(isset($_GET['pais'])){

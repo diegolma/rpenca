@@ -1,5 +1,22 @@
 $(document).ready(function(){
 
+	$('div[id ^= collapse]').find('form').submit(function(){
+		$.ajax({
+			type: 'POST',
+			url: 'apostar.php',
+			data: $(this).serialize(),
+			dataType: 'json',
+			success:function(response){
+				if(response['correcto']===true){
+					$('div[id ^= collapse]').reload();
+				}else{
+					alert(response['mensaje']);
+				}
+			}
+		});
+		return false;
+	})
+
 	$('#pdh ul li form').submit(function(){
 		$.ajax({
 			type: 'POST',

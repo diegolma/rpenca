@@ -324,6 +324,7 @@ use Facebook\FacebookRequestException;
 	}
 
 	function apostar(){
+		var_dump($_POST);
 		if(isset($_POST['partido']) && isset($_POST['sel1']) && isset($_POST['sel2']) && isset($_POST['pred1']) && isset($_POST['pred2'])){
 			if(Auth::logueado()){
 				$p=new Pronostico();

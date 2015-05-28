@@ -102,8 +102,33 @@
 				<i class="fa fa-clock-o"></i> Jugandose ahora:
 			</div>
 			<div class="panel-body">
-				<!--Cambiar esto :P-->
-				Sin hacer :P
+				{if count($livescore) <= 0}
+					Actualmente no se est&aacute;n jugando partidos.
+				{else}
+					<ul class="item-group">
+					{foreach from=$livescore item=partido}
+						<li class="list-group-item">
+							<div class="row">
+								<div class="col-lg-2">
+									{$partido->getSeleccionA()->getName()}
+								</div>
+								<div class="col-lg-5" style="text-align:center;">
+									<input type="text" name="pred1" size="3" required style="text-align:right;" value="{$partido->getGa()}" readonly="">
+									 - 
+									<input type="text" name="pred2" size="3" required value="{$partido->getGb()}" readonly="">
+								</div>
+								<div class="col-lg-2">
+									{$partido->getSeleccionB()->getName()}
+								</div>
+								<div class="col-lg-3">
+									{$partido->getMinuto()}''
+								</div>
+							</div>
+						</form>
+					</li>
+					{/foreach}
+					</ul>
+				{/if}
 			</div>
 		</div>
 	</div>

@@ -242,10 +242,36 @@ function guardarP(){
         $aux=explode("/", $fecha);
         $fecha=implode("-", $aux);
         echo $v['id']." ".$fecha."<br>";
-        $ret=$p->getDb()->prepare("INSERT INTO PARTIDOS (id, fecha) VALUES (?, ?)");
-        $ret->bind_param("is", $v['id'], $fecha);
+        $sql="INSERT INTO entre (id_p, id_s) VALUES (?, ?)";
+        $ret=$p->getDb()->prepare($sql);
+        $ret->bind_param("ii", $v['id'], $v['team1']);
+        $ret->execute();
+        $ret=$p->getDb()->prepare($sql);
+        $ret->bind_param("ii", $v['id'], $v['team2']);
         $ret->execute();
     }
 }
 
+function livescore(){
+    $pedido=BODY_API.KEY_API."&req=livescore&competitions=177";
+    $ped=pedir($pedido);
+    $s=new Seleccion();
+    $ret=array();
+    if($ped['matches']){
+        foreach ($ped['matches'] as $key => $value) {
+            $p=new Partido();
+            $id=$value['id'];
+            $p->setId($id);
+            $p->setFecha(date('Y-m-d'));
+            $p->setMinuto($value['live_minute']);
+            $aux=explode("-",$value['result']);
+            $p->setGa($aux[0]);
+            $p->setGb($aux[1]);
+            $p->setSeleccionA($s->obtenerPorId($value['team1']));
+            $p->setSeleccionB($s->obtenerPorId($value['team2']));
+            $ret[]=$p;
+        }
+    }
+    return $ret;
+}
 ?>
