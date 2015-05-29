@@ -86,9 +86,21 @@
 									</tr>
 								</thead>
 								<tbody>
-									{foreach from=$jugadores item=jugador}
+                                    <script type="text/javascript">
+                                        $(document).ready(function(){
+                                            $("#jug").click(function(){
+                                                {$jugador->getidJugador()}
+                                            });
+                                        });
+                                    </script>
+							
+                            		{foreach from=$jugadores item=jugador}
                   					<tr>
-                    					<td>{$jugador->getNick()}</td>
+                    					<td>
+                                            <a href="kitty.php?juga={$jugadror->getidJugador()}" >
+                                            {$jugador->getNick()}    
+                                            </a>
+                                        </td>
                     					<td>{$jugador->getPos()}</td>                                        
                     					<td>{$jugador->getGol()}</td>                                        
                     					<td>{$jugador->getAma()}</td>                                        

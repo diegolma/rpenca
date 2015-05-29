@@ -20,7 +20,31 @@
 
     <!--El favicon-->
     <link rel="icon" type="image/png" href="favicon.png">
+    <script type="text/javascript" >
+        function validarEmail(str){
+           var xmlhttp;
+            if(str.length==0){
+                document.getElementById("mail").innerHTML="";
+                return;
+            }
+            if (window.XMLHttpRequest){ // si estamos en una version nueva de navegador
+                xmlhttp= new XMLHttpRequest;
+            }
+            else{
+                xmlhttp= new ActiveXObject("Microsoft.XMLHTTP");
+            }
 
+
+            xmlhttp.onreadystatechange=function(){
+                if(xmlhttp.readyState==4 && xmlhttp==200) 
+                    document.getElementById("mail").innerHTML=xmlhttp.responseText;
+            }
+
+            xmlhttp.open("GET","validarEmail.php?e="+str,true);
+            xmlhttp.send();
+    }
+
+    </script>
   </head>
 
   <body>
@@ -102,10 +126,10 @@
                     </div>
 
                     <!-- Text input-->
-                    <div class="form-group">                      
+                    <div class="form-group" >                      
                       <div class="col-md-11">
                         <a><i class="fa fa-envelope fa-2x registro"></i></a>
-                        <input id="mail" name="mail" placeholder="Email" class="form-control input-md contacto" required="" type="text">
+                        <input id="mail" name="mail" placeholder="Email" class="form-control input-md contacto" required="" type="text" onkeyup="validarEmail(this.value)";>
                         
                       </div>
                     </div>
