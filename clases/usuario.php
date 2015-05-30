@@ -1,7 +1,12 @@
 <?php
+<<<<<<< .mine
+require_once "clase_base.php";
+require_once "pronostico.php";
+=======
 require_once "clases/clase_base.php";
 require_once "clases/pronostico_usr.php";
 require_once "clases/pronostico.php";
+>>>>>>> .r41
 
 class Usuario extends ClaseBase{	
 
@@ -13,7 +18,7 @@ class Usuario extends ClaseBase{
     public $id_t = "";
     public $id_g = "";
 	private $password="";
-    private $avatar=NULL;
+    private $avatar="";
 
 	public function __construct($obj=NULL) {        
         if(isset($obj)){
@@ -145,31 +150,16 @@ class Usuario extends ClaseBase{
         return false;
     }
 
-    public function agregarId($tipo, $id, $mail){
-        //Se supone que existe el usuario
-        $user=$this->existe($mail);
-        if($user){
-            switch ($tipo){
-                case 1://FB
-                    $col="id_f";
-                break;
-                case 2://TW
-                    $col="id_t";
-                break;
-                case 3://G+
-                    $col="id_g";
-                break;
-            }
-            $resultado=$this->getDB()->prepare("UPDATE USUARIOS SET $col = ? WHERE id = ?");
-            $resultado->bind_param("is", $id, $user);
-            $resultado->execute();
-            if($resultado->affected_rows>0){
-                echo "OK";
-            }
-            else{
-                echo "mal";
-            }
+    public function agregarId($tipo, $id, $mail){                
+        $resultado=$this->getDB()->prepare("UPDATE USUARIOS SET ".$tipo." = ? WHERE mail = ?");
+        $resultado->bind_param("is", $id, $mail);
+        $resultado->execute();
+        /*if($resultado->affected_rows>0){
+            echo "OK";
         }
+        else{
+            echo "mal";
+        } */       
     }
 
     public function pronosticos(){
@@ -201,7 +191,7 @@ class Usuario extends ClaseBase{
     }
 
     public function editar($id, $key, $valor){
-        $sql="UPDATE USUARIOS SET $key=? WHERE id=?";
+        $sql="UPDATE USUARIOS SET ".$key." = ? WHERE id = ?";
         $resultado=$this->db->prepare($sql);
         $resultado->bind_param("si",$valor, $id);
         $resultado->execute();
@@ -268,6 +258,19 @@ class Usuario extends ClaseBase{
                 break;
         }
     }
+<<<<<<< .mine
+
+    public function asociado($id,$valor){
+        $resultado=$this->getDB()->prepare("SELECT id FROM USUARIOS WHERE ".$id."= ?");
+        $resultado->bind_param("s",$valor);
+        $resultado->execute();
+        $resultado->bind_result($id);
+        while($resultado->fetch()){
+            return $id;
+        }
+        return false;        
+    }
+}=======
 
     public function getUsrXshaMail($shamail){
         $res=$this->db->prepare("SELECT * FROM USUARIOS");
@@ -345,4 +348,4 @@ class Usuario extends ClaseBase{
         return false;
     }
 }
-?>
+?>>>>>>>> .r41
