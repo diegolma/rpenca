@@ -32,11 +32,21 @@ class ClaseBase{
         return $resultados;   
     }
 
+<<<<<<< .mine
+    public function obtenerPorId($id){        
+        $sql="SELECT * FROM $this->tabla WHERE id=".$id;
+=======
     public function obtenerPorId($id){
         $sql="SELECT * FROM ".$this->tabla." WHERE id = ".$id;
+>>>>>>> .r41
         $res=NULL;
+<<<<<<< .mine
+        $resultado =$this->db->query($sql) or die ("Fallo en la consulta");
+        if($fila = $resultado->fetch_object()) {
+=======
         $resultado =$this->db->query($sql) or die ("Fallo en la consulta");
          if($fila = $resultado->fetch_object()) {
+>>>>>>> .r41
            $res= new $this->modelo($fila);
         }
 
