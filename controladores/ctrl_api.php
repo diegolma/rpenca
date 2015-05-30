@@ -1,4 +1,6 @@
 <?php
+set_time_limit(0);
+ini_set("max_execution_time", 0);
 require 'vendor/autoload.php';
 require_once('clases/template.php');
 require_once('clases/seleccion.php');
@@ -18,7 +20,7 @@ function pedir($pedido){
 function infoPais($arrayMulti){	
 
     //para la data 
-
+    
     $id = $arrayMulti["team"]["id"];    //id general
     $seleccion = new seleccion();
     $idCopa = $seleccion->getIdCopa($id);	//id en la copa
@@ -39,12 +41,113 @@ function infoPais($arrayMulti){
     $twitter = $arrayMulti["team"]["twitter"];
     $escudo = $arrayMulti["team"]["shield"];
     
+    //$ret=$jugad->getDb()->prepare("INSERT INTO JUGADOR (idS,completo,fNac,edad,peso,altura,position,twitter,liga,equipo,avatar) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+       //$ret->bind_param("ississsssss", $idMexico,$completo,$fecha,$edad,$peso,$altura,$es,$twitter,$ligacuadro,$equipo,$foto);
+       //$ret->execute();
+    
     //para la plantilla    
     $pedido = BODY_API.KEY_API."&req=team_players&team=".$idCopa."&year=2015";
     $array = array();
     $array = plantilla(pedir($pedido));
     $datos = array('pais' => $pais, 'nombreCorto' => $nombreCorto, 'dt' => $dt, 'web' => $web, 'direccion' => $direccion, 'presidente' => $presidente, 'nombre' => $nombre, 'twitter' => $twitter, 'escudo' => $escudo, 'jugadores' => $array, 'participaciones' => $participaciones, 'copas' => $copas, 'jugados' => $jugados, 'victorias' => $victorias);
     return $datos;
+}
+
+function Jugador(){
+    if(isset($_GET['juga'])){
+        $pedido=BODY_API.KEY_API.'&req=player&id='.$_GET['juga'].'&year=2015';
+        $arrayMulti=pedir($pedido);
+        $jugador=new Jugador();
+        $id = $_GET['juga']; // el id del jugador   
+        $nick=$jugador->getCompletoBD($id);//$nick = $arrayMulti["name"]; //nombres del jugador
+        //$apellido=$jugador->getApellido($id);//$apellido = $arrayMulti["last_name"]; //apellido
+        $position=$jugador->getPositionBD($id);//$position = $arrayMulti["role"]; //1-golero 2-defensa 3-mediocampo 4-delantero
+        $cumple=$jugador->getCumpleBD($id);//$cumple = $arrayMulti["birthdate"]; //fNac
+        $edad=$jugador->getEdadBD($id);//$edad=$arrayMulti["age"];    //edad
+        $peso=$jugador->getPesoBD($id);//$peso=$arrayMulti["weight"]; //peso
+        $altura=$jugador->getAlturaBD($id);//$altura=$arrayMulti["height"]; //altura
+        //$liga=$arrayMulti["statistics_resume"][0]["category_name"];
+        $paisCuadro=$jugador->getLigaPaisBD($id);//$paisCuadro=$arrayMulti["statistics_resume"][0]["country_name"];
+        $equipo=$jugador->getEquipoBD($id);//$equipo=$arrayMulti["team_name"];
+        $altura= $altura/100;
+        $twitter=$jugador->getTwitterBD($id);//$twitter=$arrayMulti["twitter"]; //twitter
+        //$twitter="@".$twitter;
+        $foto=$jugador->getFotoBD($id);//$foto=$arrayMulti["player_avatar"];
+        $fecha=explode("-", $cumple);
+        $fecha=array_reverse($fecha);
+
+            switch ($fecha[1]) {
+                case '01':
+                    $fecha[1]="enero";
+                break;
+                case '02':
+                    $fecha[1]="febrero";
+                break;  
+                case '03':
+                    $fecha[1]="marzo";
+                break;
+                case '04':
+                    $fecha[1]="abril";
+                break;
+                case '05':
+                    $fecha[1]="mayo";
+                break;
+                case '06':
+                    $fecha[1]="junio";
+                break;
+                case '07':
+                    $fecha[1]="julio";
+                break;
+                case '08':
+                    $fecha[1]="agosto";
+                break;
+                case '09':
+                    $fecha[1]="setiembre";
+                break;
+                case '10':
+                    $fecha[1]="octubre";
+                break;
+                case '11':
+                    $fecha[1]="noviembre";
+                break;
+                case '12':
+                    $fecha[1]="diciembre";
+                break;
+             } 
+        $es = "";
+            switch ($position) {
+                case '1':
+                    $es = "Golero";
+                    break;
+                case '2':
+                    $es = "Defensa";
+                    break;
+                case '3':
+                    $es = "Mediocampo";
+                    break;
+                case '4':
+                    $es = "Atacante";
+                    break;            
+            }
+            //Nacimiento  ->  Funchal, Madeira,Portugal 5 de febrero de 1985 (30 años)
+        $fechastring=implode(" de ", $fecha);
+        //$jugador= new Jugador();
+        $jugador->setidJugador($id);
+        $jugador->setNick($nick);
+        //$jugador->setApellido($apellido); 
+        $jugador->setPos($es);
+        $jugador->setCumple($fechastring); 
+        $jugador->setEdad($edad); 
+        $jugador->setEquipo($equipo);
+        //$jugador->setLiga($liga);
+        $jugador->setPaisDJ($paisCuadro);
+        $jugador->setPeso($peso); 
+        $jugador->setAltura($altura);
+        $jugador->setTwitter($twitter);
+        $jugador->setFoto($foto);
+        $jugador->setPedido($pedido);
+        return $jugador;
+   }
 }
 
 function infoGrupo($arrayMulti){ 
@@ -94,10 +197,10 @@ function infoGrupo($arrayMulti){
     return $datos;
 }
 
-function plantilla($arrayMulti){
+function plantilla($arrayMulti){//hay que llenas los campos de tarjetas rojas y amarillas en la base de datos
     $ret = array();
 	foreach ($arrayMulti["player"] as $key => $value) {
-        
+        $jugador= new Jugador();
         $nick = $value["nick"];
         $position = $value["role"]; //1-golero 2-defensa 3-mediocampo 4-delantero
         $goles = $value["goals"];
@@ -131,7 +234,7 @@ function plantilla($arrayMulti){
             $rojas=0;
         }
 
-        $jugador = new jugador();
+        //$jugador = new jugador();
         $jugador->setNick($nick);
         $jugador->setPos($es);
         $jugador->setGol($goles);
@@ -250,6 +353,117 @@ function guardarP(){
         $ret->bind_param("ii", $v['id'], $v['team2']);
         $ret->execute();
     }
+}
+
+function damejugadores(){
+   $pedido="http://www.resultados-futbol.com/scripts/api/api.php?tz=America/Argentina/Buenos_Aires&format=json&key=91bdc85679e1b7a1adfe93e580c489c4&req=team_players&team=141912&year=2015";
+   $ped=pedir($pedido);
+   return $ped;
+}
+
+function guardarP(){
+    $ped=damejugadores();
+    $jugad=new Jugador();
+        foreach($ped['player'] as $key => $v){
+        
+        $ped2="http://www.resultados-futbol.com/scripts/api/api.php?tz=America/Argentina/Buenos_Aires&format=json&key=91bdc85679e1b7a1adfe93e580c489c4&req=player&id=".$v['id']." &year=2015";
+        $arrayMulti=pedir($ped2);
+
+        //$id=$arrayMulti["player_id"];
+        $nick = $arrayMulti["name"]; //nombres del jugador
+        $apellido = $arrayMulti["last_name"]; //apellido
+        $completo=$nick." ".$apellido;  //NOMBRE Y APELLIDO
+        $position = $arrayMulti["role"]; //1-golero 2-defensa 3-mediocampo 4-delantero
+        $cumple = $arrayMulti["birthdate"]; //fNac
+        $edad=$arrayMulti["age"];    //edad
+        $peso=$arrayMulti["weight"]; //peso
+        $altura=$arrayMulti["height"]; //altura
+        $liga=$arrayMulti["statistics_resume"][0]["category_name"];
+        if (is_null($liga)) {
+            $liga=" - ";
+        }
+        $paisCuadro=$arrayMulti["statistics_resume"][0]["country_name"];
+        if (is_null($paisCuadro)) {
+            $paisCuadro= " - ";
+        }
+        $ligacuadro=$liga." ".$paisCuadro;
+        $equipo=$arrayMulti["team_name"];
+        $altura= $altura/100;
+        $twitter=$arrayMulti["twitter"]; //twitter
+        $foto=$arrayMulti["player_avatar"];
+        $fecha=explode("-", $cumple);
+        //$fecha=array_reverse($fecha);
+        $fecha=implode("-", $fecha);
+
+         $es = "";
+            switch ($position) {
+                case '0':
+                    $es=" - ";
+                    break;
+                case '1':
+                    $es = "Golero";
+                    break;
+                case '2':
+                    $es = "Defensor";
+                    break;
+                case '3':
+                    $es = "Mediocampista";
+                    break;
+                case '4':
+                    $es = "Delantero";
+                    break;            
+            }
+        if (is_null($completo)) {
+            $completo = " - ";
+        }
+        if (is_null($fecha)) {
+            $fecha = new date("m.d.y");
+        }
+        if (is_null($edad)) {
+            $edad=0;
+        }
+        if (is_null($peso)) {
+            $peso=0;
+        }
+        if (is_null($altura)) {
+            $altura=0;
+        }
+        if (is_null($twitter)) {
+            $twitter=" - ";
+        }
+        if (is_null($equipo)) {
+            $equipo= " - ";
+        }
+        if (is_null($foto)) {
+            $foto="http://www.edydsi.com:8069/forum/user/187/avatar";
+        }
+
+       
+       $idArgentina=3770;//listo con sus 23 convocados
+       $idUruguay=3768;//listo con sus 23 convocados
+       $idBrasil=3775; //listo con sus 23 convocados
+       $idBolivia=3769;//a nadie le importa quienes jueguen a no para esta seleccion, por ende ya estan ingresados en la bd, falta dar la lista
+       $idPeru=3777; //lista con sus 23 convocados
+       
+       
+       $idJamaica=6219; //falta 141918
+       
+       
+       $idChile=3771;//ingresado en la base, pero todavia no se sabe los convacados
+
+       $idMexico=3811;//falta 141912 faltan convocados
+       $idParaguay=3773;//se saben los 23 convocados, pero la api no lo sabe -->"http://depor.pe/futbol-internacional/copa-america-paraguay-dio-su-lista-definitiva-23-convocados-1044008"
+       $idColombia=3774;//falta la lista de convocados
+       $idVenezuela=3772;//falta 141922 los 23 convocados
+       echo "Nombre: ".$completo."    Equipo: ".$equipo."<br>";
+       
+    //$ret->error;   
+   
+       //$ret=$jugad->getDb()->prepare("INSERT INTO JUGADOR (idS,completo,fNac,edad,peso,altura,position,twitter,liga,equipo,avatar) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+       //$ret->bind_param("ississsssss", $idMexico,$completo,$fecha,$edad,$peso,$altura,$es,$twitter,$ligacuadro,$equipo,$foto);
+       //$ret->execute();
+    //$ret->error;   
+   }
 }
 
 function livescore(){
