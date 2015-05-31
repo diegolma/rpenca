@@ -1,4 +1,4 @@
-<div class="modal-header">
+<div class="modal-header">    
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 style="color:black">Registrarse</h4>
 </div>
@@ -36,9 +36,10 @@
     </div>  
   <br>  
   <!-- Button -->  
-    <button id="confirmar" name="confirmar" class="btn btn-sm mar bot sociales btn-block">Registrarse</button>            
+    <button id="confirmar" name="confirmar" class="btn btn-sm bot sociales btn-block">Registrarse</button>            
   </fieldset>
   </form>
 </div>
 <div class="modal-footer">
+  <button type="button" class="close" data-toggle="tooltip" data-placement="left" title="Una vez que te registres podrás asociar tus cuentas de redes sociales e iniciar sesión con ellas." data-original-title=""><i class="fa fa-info-circle"></i></button>
 </div>

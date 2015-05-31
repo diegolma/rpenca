@@ -82,19 +82,35 @@
                         <a href="dashboard.php?"><i class="fa fa-fw fa-dashboard"></i> Principal </a>
                     </li>
                     <li>
+<<<<<<< .mine
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Grupos <i class="fa fa-fw fa-caret-down"></i></a>
+=======
                         <a href="dashboard.php?v=perfil_usr"><i class="fa fa-fw fa-user"></i> Mi Perfil </a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-users"></i> Grupos <i class="fa fa-fw fa-caret-down"></i></a>
+>>>>>>> .r41
                         <ul id="demo" class="collapse">
                             <li>
+<<<<<<< .mine
+                                <a href="#" role="button" onClick="window.location='index.php?grupo=1" >Grupo 1</a>
+=======
                                 <a href="http://localhost/penca/trunk/dashboard.php?v=info_grupo&group=1">Grupo 1</a>
+>>>>>>> .r41
                             </li>
                             <li>
+<<<<<<< .mine
+                                <a href="#" role="button" onClick="window.location='index.php?grupo=2" >Grupo 2</a>
+=======
                                 <a href="http://localhost/penca/trunk/dashboard.php?v=info_grupo&group=2">Grupo 2</a>
+>>>>>>> .r41
                             </li>
                             <li>
+<<<<<<< .mine
+                                <a href="#" role="button" onClick="window.location='index.php?grupo=3" >Grupo 3</a>
+=======
                                 <a href="http://localhost/penca/trunk/dashboard.php?v=info_grupo&group=3">Grupo 3</a>
+>>>>>>> .r41
                             </li>
                         </ul>
                     </li>

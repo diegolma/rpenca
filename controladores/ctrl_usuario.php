@@ -3,11 +3,19 @@ require_once "clases/usuario.php";
 require_once "clases/template.php";
 require_once "clases/Utils.php";
 require_once "clases/auth.php";
+<<<<<<< .mine
+require_once "ctrl_api.php";
+require_once "config/config.php";
+require_once "vendor/autoload.php";
+=======
 require_once "clases/session.php";
 require_once "controladores/ctrl_api.php";
 require_once "vendor/autoload.php";
 require_once "libs/facebook-php-sdk-v4-4.0-dev/autoload.php";//pal facebook
+>>>>>>> .r41
 
+<<<<<<< .mine
+=======
 use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
 use Facebook\FacebookRedirectLoginHelper;
@@ -70,11 +78,27 @@ use Facebook\FacebookRequestException;
 		$tpl->mostrar('usuarios_login',array());
 	}
 
+>>>>>>> .r41
 	function home(){
 		$tpl= new Template();
 		$mensaje="";
+<<<<<<< .mine
+		$loginUrl="#";		
+		if (isset($_GET["grupo"])) {
+			$pedido = BODY_API.KEY_API.'&req=tables&league=177&group='.$_GET["grupo"];
+			infoGrupo(pedir($pedido));
+			exit;
+		}
+		elseif(isset($_GET["pais"])){			
+			$pedido = BODY_API.KEY_API.'&req=team&id='.$_GET["pais"];
+			infoPais(pedir($pedido));
+			exit;
+		}
+		elseif(isset($_GET["cerrar"])){//Cierro Sesion
+=======
 		$loginUrl="#";
 		if(isset($_GET["cerrar"])){//Cierro Sesion
+>>>>>>> .r41
 			$usr=new Usuario();
 			$usr->logout();
 		}
@@ -117,96 +141,46 @@ use Facebook\FacebookRequestException;
 			else{
 				$mensaje="La contraseña y la confirmación deben coincidir";
 			}
-		}
-
-		if(Auth::logueado()){
-			$usuario=new Usuario();
-			$id=Session::get('id');
-			$usuario=$usuario->obtenerPorId($id);
-		}
-		else{
-			$usuario="";
-			//Cosas para el inicio de sesion con fb :P
-			session_start();
-			FacebookSession::setDefaultApplication('755532661231775','b19d557f899b36d2721f81c70d0c0b05');
-			$helper = new FacebookRedirectLoginHelper('http://localhost/penca/trunk/loginFB.php');
-			$permissions = array(
-				   'scope' => 'public_profile,email'
-				);
-			$loginUrl = $helper->getLoginUrl($permissions);
-
-		}
-		
-
+		}				
+		$error=false;	
 		$datos=array('usuario' => $usuario,
 					 'mensaje' => $mensaje,
-					 'urlFB' => $loginUrl);
+					 'urlFB' => $loginUrl,
+					 'error' => $error);
 		$tpl->asignar('proyecto',"Penca");		
 		$tpl->mostrar('home',$datos);
 	}
 
-	function loginFB($params){
-		session_start();
+<<<<<<< .mine
+	function dashboard($vista="", $titulo=""){
+		if(Auth::logueado()){
+			$tpl=new Template();
+			$mensaje="";
+			$vista="perfil_usr.tpl";
+			$titulo="Perfil de Usuario";
+			$usr=new Usuario();						
+			$usr=$usr->obtenerPorId(Session::get('id'));			
+			$email = $usr->getEmail();
+			$default = "mm";
+			$size = 225;
+			$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
 
-		FacebookSession::setDefaultApplication( '755532661231775', 'b19d557f899b36d2721f81c70d0c0b05' );
-		$helper = new FacebookRedirectLoginHelper('http://localhost/penca/trunk/loginFB.php');
-		try {
-		    if ( isset( $_SESSION['access_token'] ) ) {
-		        // Check if an access token has already been set.
-		        $session = new FacebookSession( $_SESSION['access_token'] );
-		    } else {
-		        // Get access token from the code parameter in the URL.
-		        $session = $helper->getSessionFromRedirect();
-		    }
-		} catch( FacebookRequestException $ex ) {
-
-		    // When Facebook returns an error.
-		    print_r( $ex );
-		} catch( \Exception $ex ) {
-
-		    // When validation fails or other local issues.
-		    print_r( $ex );
-		}
-		if ( isset( $session ) ) {
-
-		    // Retrieve & store the access token in a session.
-		    $_SESSION['access_token'] = $session->getToken();
-		    // Logged in
-
-		    try {
-
-			    // Retrieve User’s Profile Information
-				$request = ( new FacebookRequest( $session, 'GET', '/me' ) )->
-				execute();
-
-				// Get response as an array
-			    $user = $request->getGraphObject()->asArray();
-			    
-			    //mi codigo
-			    $usr=new Usuario();
-			    if($usr->existe($user["email"])){
-			    	$usr->agregarId(1, $user["id"], $user["email"]);
-			    }
-			    else{}
-
-			  } catch(FacebookRequestException $e) {
-
-			    echo "Exception occured, code: " . $e->getCode();
-			    echo " with message: " . $e->getMessage();
-
-			  }   
-		} else {
-
-		    // Generate the login URL for Facebook authentication.
-		    $permissions = array(
-			   'scope' => 'public_profile,email'
-			);
-
-			$loginUrl = $helper->getLoginUrl($permissions);
-		    echo '<a href="' . $loginUrl . '">Login</a>';
+			$usr->setAvatar($grav_url);
+			
+			$datos=array('usuario' => $usr,
+						 'mensaje' => $mensaje,
+						 'proyecto' => "Penca - Dashboard",
+						 'titulo' =>$titulo,
+						 'vista' => $vista);
+			$tpl->mostrar('dashboard',$datos);
+		}else{
+			header("location:index.php");
+			exit;
 		}
 	}
 
+=======
+>>>>>>> .r41
 	function editar(){
 		if(!Auth::logueado()){
 			header('location:index.php');

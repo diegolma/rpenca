@@ -12,20 +12,24 @@
                 <div class="modal-body">        
                         <fieldset>                                   
                                 <div class="row row-centered">
+                                <div class="alert alert-danger alert-dismissable hidden" id="men">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    Para poder iniciar sesión con esta red debes vincular tu cuenta primero.
+                                </div>
                                     <div class="col col-sm-4">
-                                        <a href= {$urlFB} class="btn btn-lg face sociales center-block">        
+                                        <a href="login-with.php?provider=Facebook" role="button" class="btn btn-lg face sociales center-block">        
                                             <i class="fa fa-facebook visible-xs"></i>
                                             <span class="hidden-xs">Facebook</span>
                                         </a>
                                     </div>
                                     <div class="col col-sm-4">
-                                        <a href="#" class="btn btn-lg twitter sociales center-block">       
+                                        <a href="login-with.php?provider=Twitter" role="button" class="btn btn-lg twitter sociales center-block">       
                                             <i class="fa fa-twitter visible-xs"></i>
                                             <span class="hidden-xs">Twitter</span>
                                         </a>
                                     </div>  
                                     <div class="col col-sm-4">
-                                        <a href="#" class="btn btn-lg goog sociales center-block">                                          
+                                        <a href="login-with.php?provider=Google" role="button" class="btn btn-lg goog sociales center-block">                                          
                                             <i class="fa fa-google visible-xs"></i>
                                             <span class="hidden-xs">Google+</span>
                                         </a>
@@ -59,7 +63,7 @@
                                         <label class="checkbox">
                                             <input type="checkbox" value="remember-me">Remember Me
                                         </label>
-                                    </div>-->
+                                    </div>-->                                
                                     <div>
                                         <p>
                                             <a href="restaurar.php" class="olv">&iquest;Olvidaste tu contrase&ntilde;a?</a>

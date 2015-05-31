@@ -4,7 +4,7 @@ require 'controladores/ctrl_api.php';
 require_once('config/config.php');
 //$clave="6913d6f4a6b31e5c07c1cea90562ced4";
 $pedido= 'http://www.resultados-futbol.com/scripts/api/api.php?tz=America/Argentina/Buenos_Aires&format=json&key='.KEY_API.'&req=team&id=3768';
-//$pedido= 'http://www.resultados-futbol.com/scripts/api/api.php?tz=America/Argentina/Buenos_Aires&format=json&key=6913d6f4a6b31e5c07c1cea90562ced4&req=matchs&league=177&group=1';
+//$pedido= 'http://www.resultados-futbol.com/scripts/api/api.php?tz=America/Argentina/Buenos_Aires&format=json&key=6913d6f4a6b31e5c07c1cea90562ced4&req=teams&league=204&groups=all';
 infoPais(pedir($pedido));
 
 

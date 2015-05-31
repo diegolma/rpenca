@@ -48,6 +48,7 @@
   </head>
 
   <body>
+    <input type="hidden" value="{$error}" id="error">
     {include file="cabezal.tpl"}
     <!-- Intro Header -->
     <header class="intro" id="prueba">        
@@ -190,9 +191,10 @@
 
     <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-
+    <script type="text/javascript" src="libs/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
+    <script src="js/grayscale.js"></script>    
   </body>
 </html>
 
